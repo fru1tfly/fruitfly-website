@@ -1,38 +1,869 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonts */
+
+@font-face {
+  font-family: 'DOS';
+  src: url('./assets/fonts/dos.ttf');
+}
+
+@font-face {
+  font-family: 'Nokia';
+  src: url('./assets/fonts/nokia.ttf');
+}
+
+@font-face {
+  font-family: 'System';
+  src: url('./assets/fonts/system.otf');
+}
+
+body {
+  background-color: #1b1b1b;
+}
+
+.boy-computer, .screen {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes screenglow {
+  0% { filter: drop-shadow(0px 0px 20px #fff); }
+  50% { filter: drop-shadow(0px 0px 60px #fff); }
+  100% { filter: drop-shadow(0px 0px 20px #fff); }
+}
+
+.screen {
+  filter: drop-shadow(0px 0px 50px #fff);
+  animation: screenglow 8s ease-in-out infinite;
+}
+
+.maintenance-text {
+  font-family: 'Times New Roman';
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #fff;
+  font-size: 36px;
+  top: 75%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.links-bar {
+  position: absolute;
+  top: calc(var(--computer-border-width) / 5.5);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.fa-brands {
+  font-size: 32px;
+  text-decoration: none;
+  color: #996633;
+  text-shadow: 3px 3px 0px #c4974391;
+}
+
+.fa-brands:visited {
+  text-decoration: none;
+}
+
+.home-page-content {
+  position: relative;
+}
+
+.main-logo {
+  max-width: 75vw;
+}
+
+.main-photo-box {
+  width: 90%;
+}
+
+.main-photo {
+  width: 100%;
+}
+
+.photo-caption {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: right;
+}
+
+/* Computer Borders */
+
+.computer-border {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-height: 900px) {
+  :root {
+    --computer-border-width: 60px;
+  }
+
+  .scanlines {
+    width: calc(100vw - var(--computer-border-width) * 1.5);
+    height: 80vh;
+  }
+
+  .page-content {
+    top: calc(var(--computer-border-width) * 0.85);
+    left: calc(var(--computer-border-width) * 0.75);
+  }
+
+  .fa-brands {
+    font-size: 24px;
+  }
+
+  .links-bar {
+    top: calc(var(--computer-border-width) / 8);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media screen and (min-height: 901px) {
+  :root {
+    --computer-border-width: 100px;
+  }
+
+  .page-content {
+    top: calc(var(--computer-border-width) * 0.85);
+    left: calc(var(--computer-border-width) * 0.75);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .computer-border {
+    width: 800px;
+    height: 90vh;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+  
+  .scanlines {
+    width: calc(800px - var(--computer-border-width) * 1.5);
+    height: 59vh;
+  }
+}
+
+.computer-corner-top {
+  background-image: url('./assets/computer-background/computer-corner-top.png');
+  background-size: contain;
+  width: var(--computer-border-width);
+  aspect-ratio: 0.9226;
+  background-repeat: no-repeat;
+}
+
+.computer-top {
+  background-image: url('./assets/computer-background/computer-top.png');
+  flex-grow: 1;
+  background-size: 100% calc(var(--computer-border-width) / 0.9226);
+}
+
+.computer-side {
+  background-image: url('./assets/computer-background/computer-side.png');
+  width: var(--computer-border-width);
+  min-height: 200px;
+  background-size: var(--computer-border-width) 100%;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+
+.computer-corner-bottom {
+  background-image: url('./assets/computer-background/computer-corner-bottom.png');
+  background-size: contain;
+  width: var(--computer-border-width);
+  aspect-ratio: 0.4254724;
+  background-repeat: no-repeat;
+}
+
+.computer-bottom {
+  background-image: url('./assets/computer-background/computer-bottom.png');
+  flex-grow: 1;
+  background-size: 100% calc(var(--computer-border-width) / 0.4234724);
+}
+
+.computer-logo {
+  background-image: url('./assets/computer-background/fr.png');
+  width: calc(var(--computer-border-width) * 1.5);
+  aspect-ratio: 3.59333;
+  background-size: contain;
+  position: absolute;
+  left: calc(var(--computer-border-width) / 3);
+  bottom: calc(var(--computer-border-width) / 3);
+  background-repeat: no-repeat;
+}
+
+.computer-floppy-band {
+  background-image: url('./assets/computer-background/floppy-band.png');
+  flex-grow: 1;
+  background-size: 100% calc(var(--computer-border-width) / 6);
+}
+
+.computer-floppy-drive {
+  background-image: url('./assets/computer-background/floppy-drive.png');
+  height: calc(var(--computer-border-width) / 6);
+  aspect-ratio: 29.15;
+  background-size: contain;
+}
+
+.computer-floppy-bar {
+  display: flex;
+  position: absolute;
+  width: calc(100% - var(--computer-border-width) / 10);
+  left: calc(var(--computer-border-width) / 20);
+  top: calc(var(--computer-border-width) / 0.9);
+}
+
+.flipped {
+  transform: scaleX(-1);
+}
+
+.middle-gap {
+  justify-content: space-between;
+  flex-grow: 1;
+ 
+}
+
+.computer-border-row {
+  display: flex;
+  position: relative;
+  pointer-events: none;
+  user-select: none;
+}
+
+.page-content {
+  position: absolute;
+  z-index: -1;
+}
+
+/* Icons */
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15%;
+  padding: 20%;
+  column-gap: 15%;
+  justify-content: center;
+}
+
+.icon-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 6px;
+  flex: 1 1 0px;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+.icon-image {
+  width: 72px;
+  cursor: pointer;
+  position: relative;
+  transition: top 0.2s ease 0s;
+  top: 0;
+}
+
+.icon-image:hover {
+  top: -5px;
+}
+
+.icon-caption {
+  font-family: 'DOS';
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  text-shadow: 3px 2px 0px rgba(73, 73, 73, 0.48);
+}
+
+@keyframes icon {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: -10px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+/* Window */
+.window {
+  position: fixed;
+  top: 42.5%;
+  left: 50%;
+  width: 75%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  border: 4px ridge;
+  background-color:#fff;
+
+  z-index: 4;
+}
+
+.window-enter {
+  animation: openwindow 0.2s ease-out 1;
+}
+
+.window-exit {
+  animation: closewindow 0.2s ease-in 1;
+}
+
+.window-enter-child {
+  animation: openwindow-child 0.2s ease-out 1;
+}
+
+.window-exit-child {
+  animation: closewindow-child 0.2s ease-in 1;
+}
+
+.window-header {
+  display: flex;
+  align-items: center;
+  background-color: rgb(107, 107, 150);
+  font-family: 'DOS';
+  color: #fff;
+  padding: 3px;
+}
+
+.window-body {
+  height: calc(100% - 25px);
+  position:relative;
+}
+
+.window-title {
+  flex-grow: 1;
+  padding: 0px 3px;
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-wrap: nowrap;
+  user-select: none;
+}
+
+.close-window-button {
+  border: 2px outset;
+  background-color: #ccc;
+  color: #333;
+  width: 18px;
+  text-align: center;
+  font-size: 12px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.child-window {
+  width: 80%;
+  height: 95%;
+  top: calc(45% + 15px);
+}
+
+@keyframes openwindow {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+
+  100% {
+    width: 75%;
+    height: 60%;
+  }
+}
+
+@keyframes closewindow {
+  0% {
+    width: 75%;
+    height: 60%;
+  }
+
+  100% {
+    width: 0px;
+    height: 0px;
+  }
+}
+
+@keyframes openwindow-child {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+
+  100% {
+    width: 80%;
+    height: 95%;
+  }
+}
+
+@keyframes closewindow-child {
+  0% {
+    width: 80%;
+    height: 95%;
+  }
+
+  100% {
+    width: 0px;
+    height: 0px;
+  }
+}
+
+/* Scanlines */
+.scanlines {
+  overflow: hidden;
+  position: relative;
+  background-image: url('./assets/background.png');
+}
+.scanlines:before,
+.scanlines:after {
+  display: block;
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+.scanlines:after {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(0, 0, 0, 0.2) 51%
+  );
+  background-size: 100% 3px;
+  animation: scanlines 1.5s steps(60) infinite;
+}
+
+.vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 60px rgba(0,0,0,0.6) inset;
+  z-index: 1;
+}
+
+.sound-btn {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+}
+
+/* Music Page */
+
+.music-buttons {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border: 4px ridge;
+  padding: 5px;
+  width: calc(100% - 20px);
+  margin: 0 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.music-button {
+  flex: 0 0 15%;
+  margin-bottom: -5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.music-button-icon {
+  width: 65px;
+}
+
+.music-link {
+  cursor: pointer;
+}
+
+.music-button-caption {
+  font-family: System;
+  font-size: 12px;
+  text-align: center;
+}
+
+.music-logo {
+  height: 155px;
+  padding: 10px;
+}
+
+.music-header {
+  display: flex;
+  padding: 5px;
+  gap: 8px;
+  border: 4px ridge;
+  margin: 10px;
+  overflow-x: scroll;
+}
+
+.album-cover {
+  width: 100%;
+  padding: 5px;
+}
+
+.album-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  border: 2px ridge;
+  flex: 0 0 20%;
+  user-select: none;
+}
+
+.album-title {
+  font-family: Nokia;
+  font-size: 12px;
+  text-align: center;
+  flex-grow: 1;
+  padding: 2px 5px;
+}
+
+.album-year {
+  font-family: Nokia;
+  font-size: 10px;
+}
+
+/* Shows Page */
+.show-flyer-container {
+  
+}
+
+.show-flyer {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border: 2px outset;
+  margin: 5px;
+  cursor: zoom-in;
+}
+
+.show-card {
+  display: flex;
+  border: 4px ridge;
+}
+
+.show-card:nth-child(even) {
+  background-color:#e8f8fe;
+}
+
+.show-cards {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.show-details-gap {
+  flex-grow: 1;
+}
+
+.show-details {
+  padding: 5px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.show-title {
+  font-family: Nokia;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.show-ticket-link {
+  position:absolute;
+  bottom: 5px;
+  left: 5px;
+  font-family: Nokia;
+  display: flex;
+  gap: 5px;
+  align-items: start;
+}
+
+
+.show-details-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: Nokia;
+  font-size: 14px;
+}
+
+
+.show-subtitle {
+  font-family: System;
+  font-size: 14px;
+}
+
+.show-flyer-fullsize {
+  max-width: 100%;
+  max-height: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Socials Page */
+.socials-file-bar {
+  font-family: Nokia;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 5px;
+  border: 4px groove;
+  border-left: none;
+  border-right: none;
+  background-color: #dfd9d9;
+}
+
+.socials-file-bar > span {
+  width: 200px;
+}
+
+.online-img {
+  width: 50%;
+  margin-top: 30px;
+  transform: translate(-50%, 0);
+  position: relative;
+  left: 50%;
+}
+
+.no-shows-msg {
+  font-family: System;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 10%;
+  left: 50%;
+}
+
+.platform-link {
+  gap: 8px;
+}
+
+.platform-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15%;
+  padding: 5% 20%;
+  justify-content: center;
+}
+
+.platform-button-icon {
+  width: 62px;
+  margin-bottom: 20px;
+}
+
+.platform-button-caption {
+  font-family: System;
+  font-size: 14px;
+  user-select: none;
+}
+
+.platform-button {
+  cursor: pointer;
+}
+
+/* Photos & Videos Page */
+.photos-videos-container {
+  padding: 5px 10px;
+  display: flex;
+}
+.video-icon {
+  width: 90px;
+  gap: 8px;
+}
+
+.video-icon-img {
+  width: 60px;
+  cursor: pointer;
+}
+
+.video-icon-caption {
+  font-family: System;
+  word-break: break-all;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* Contact Page */
+form {
+  padding: 10px;
+  background-color: #d2d2d2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.form-input {
+  flex-grow: 1;
+}
+
+.form-input > input, textarea {
+  width: 100%;
+  border: 2px inset;
+  resize: none;
+  padding: 3px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+}
+
+.submit-row {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.submit-btn {
+  padding: 3px 30px;
+  border-radius: 0;
+  border: 3px outset;
+  cursor: pointer;
+  font-family: Nokia;
+  background-color:#d1d1d1;
+}
+
+label {
+  font-family: System;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.booking-message {
+  font-family: Nokia;
+  font-size: 14px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  background-color: #c2c3c3;
+  border-style: inset;
+  padding: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 0px;
+  border: 2px outset;
+}
+
+::-webkit-scrollbar-button:single-button {
+  background-color: #ccc;
+  border: 2px outset;
+  width: 17px;
+  height: 17px;
+  background-image: url('./assets/scroll-arrow.png');
+  background-position: center;
+  background-size: contain;
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:increment {
+  background-image: url('./assets/scroll-arrow-r.png');
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:decrement {
+  background-image: url('./assets/scroll-arrow-l.png');
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  background-image: url('./assets/scroll-arrow-d.png');
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  background-image: url('./assets/scroll-arrow-u.png');
+}
+
+
+::-webkit-scrollbar:horizontal {
+  height: 16px;
+}
+
+::-webkit-scrollbar:vertical {
+  width: 16px;
+}
+
+/* ANIMATE UNIQUE SCANLINE */
+@keyframes scanline {
+  0% {
+      transform: translate3d(0, 200000%, 0);
   }
-  to {
-    transform: rotate(360deg);
+}
+@keyframes scanlines {
+  0% {
+      background-position: 0 50%;
   }
+}
+div {
+  margin: 0;
+  padding: 0;
+}
+div.scanlines {
+  position: absolute;
+}
+
+.vertical-flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tooltip {
+  width: 300px;
+  height: 50px;
+  overflow: hidden;
+  position: fixed;
+  pointer-events: none;
+  visibility: hidden;
+  z-index: 0;
+}
+
+.tooltip > span {
+  font-family: System;
+  font-size: 16px;
+  background-color: rgb(224, 194, 120);
+  padding: 4px;
+  padding-bottom: 2px;
+  border: 2px solid rgb(210, 121, 21);
 }
