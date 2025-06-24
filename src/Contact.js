@@ -2,8 +2,8 @@ const Contact = () => {
     return (
             <form>
                 <div className="booking-message">
-                    <p>Booking inquiries: <strong style={{fontFamily: "'Times New Roman', Times, serif", fontSize: "18px"}}>booking@fruitfly.band</strong></p>
-                    <p style={{fontSize: "12px"}}>For other inquiries, use the form below</p>
+                    <p>Booking inquiries: <strong className="booking-email">booking@fruitfly.band</strong></p>
+                    <p className="booking-subtitle">For other inquiries, use the form below</p>
                 </div>
                 <div className="form-header">
                     <div className="form-input">
@@ -15,9 +15,9 @@ const Contact = () => {
                         <input type="email"/>
                     </div>
                 </div>
-                <div>
+                <div className="textarea-container">
                     <label>Message</label>
-                    <textarea rows="14"/>
+                    <textarea />
                 </div>
                 <div className="submit-row">
                     <input type="submit" value="Send" className="submit-btn" />

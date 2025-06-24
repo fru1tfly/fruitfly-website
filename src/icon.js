@@ -4,10 +4,10 @@ const Icon = (props) => {
     const {imgSrc, caption, children} = props;
 
     const icon = (
-        <div className="icon-container">
+        <>
             <img className="icon-image" alt={caption} src={imgSrc}/>
             <div className="icon-caption">{caption}</div>
-        </div>
+        </>
     );
 
     return (

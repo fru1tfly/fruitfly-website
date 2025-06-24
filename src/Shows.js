@@ -15,7 +15,7 @@ import Window from './Window';
 
 const SHOWS = [
     {
-        title: 'Foundation Room @ House of Blues',
+        title: 'Foundation Room @ HoB',
         otherActs: ['The Dreaded Laramie'],
         date: '6/28',
         price: 'FREE',
@@ -27,7 +27,7 @@ const SHOWS = [
         ageRestriction: '21+'
     },
     {
-        title: 'Flowerpot Records Fest 14',
+        title: 'FPR Fest 14',
         venue: 'Cafe Ah Roma - Berea',
         date: '7/12',
         price: '$15 (suggested)',
@@ -99,7 +99,7 @@ const Shows = () => {
                 <div className="show-details">
                     <div className="show-title">
                         <span>{show.title}</span>
-                        <span>{show.date}</span>
+                        <span className="show-date">{show.date}</span>
                     </div>
                     <div className="show-title show-date"></div>
                     {show.otherActs && 

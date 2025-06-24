@@ -64,12 +64,13 @@ const Socials = () => {
         <div className="platform-button">
             <div className="platform-link vertical-flex-center" onClick={() => navigate(platform.link)} onMouseEnter={() => setHoverTarget(platform.title)} onMouseLeave={() => setHoverTarget(null)}>
                 <img src={platform.img} alt={platform.title} className="platform-button-icon"/>
+                <div className="platform-button-caption">{platform.title}</div>
             </div>
         </div>
     ));
 
     return (
-        <div ref={mainPage}>
+        <div ref={mainPage} className="vertical-flex-center window-contents">
             <img className="online-img" src={online} alt="Fruitfly Online" />
             {hoverTarget && <MouseTracker offset={{x:0, y:-520}} mainPage={mainPage.current}>{hoverTarget}</MouseTracker>}
             <div className="platform-buttons">

@@ -8,7 +8,8 @@ export const MouseTracker = ({ children, mainPage, offset = { x: 0, y: 0} }) => 
         function handler(e) {
             const rect = mainPage.getBoundingClientRect();
             if (element.current) {
-                const x = e.pageX + offset.x - rect.x, y = e.pageY + offset.y - rect.y;
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
                 element.current.style.transform = `translate(${x}px, ${y}px)`;
                 element.current.style.visibility = 'visible';
             }

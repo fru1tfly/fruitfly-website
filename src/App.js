@@ -25,10 +25,11 @@ function App() {
   
 
   return (
-    <div>
-                  {/* <img src={logo} className="main-logo"/> */}
-
-      <div className="computer-border">
+    <div className="vertical-flex-center container">
+      <div>
+      <img src={logo} className="main-logo"/>
+      </div>
+      <div className="computer-border center-x">
         <div className="computer-border-row">
           <div className="computer-corner-top flipped"></div>
           <div className="computer-top"></div>
@@ -48,39 +49,34 @@ function App() {
             <div className="computer-floppy-drive"></div>
           </div>
         </div>
-        <div className="links-bar">
-        </div>
-        <div className="page-content">
-          <div className="scanlines">
-            <div className="vignette">
-              <div className="home-page-content">
-                <SoundContext.Provider value={soundOn}>
-                  <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
-                  <div className="icons">
-                    <Icon imgSrc={music} caption="Music">
-                      <Music />
-                    </Icon>
-                    <Icon imgSrc={shows} caption="Shows">
-                      <Shows />
-                    </Icon>
-                    <Icon imgSrc={socials} caption="Socials">
-                      <Socials />
-                    </Icon>
-                    <Icon imgSrc={photos} caption="Photos & Videos">
-                      <Photos />
-                    </Icon>
-                    <Icon imgSrc={contact} caption="Contact">
-                      <Contact />
-                    </Icon>
-                    <Icon imgSrc={epk} caption="EPK">
-                    </Icon>
-                  </div>
-                </SoundContext.Provider>
-              </div>
-            </div>
+        <div className="scanlines">
+          <div className="vignette">
+              <SoundContext.Provider value={soundOn}>
+                <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
+                <div className="icons">
+                  <Icon imgSrc={music} caption="Music">
+                    <Music />
+                  </Icon>
+                  <Icon imgSrc={shows} caption="Shows">
+                    <Shows />
+                  </Icon>
+                  <Icon imgSrc={socials} caption="Socials">
+                    <Socials />
+                  </Icon>
+                  <Icon imgSrc={photos} caption="Media">
+                    <Photos />
+                  </Icon>
+                  <Icon imgSrc={contact} caption="Contact">
+                    <Contact />
+                  </Icon>
+                  <Icon imgSrc={epk} caption="EPK">
+                  </Icon>
+                </div>
+              </SoundContext.Provider>
           </div>
         </div>
       </div>
+      <p className="credits">Site designed by Kyle Thompson</p>
     </div>
   );
 }
