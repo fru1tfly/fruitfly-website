@@ -26,15 +26,13 @@ function App() {
   let w = null;
 
   for(const [key, value] of params) {
-    console.log(key, value);
     if(key === "w") {
       w = value;
     }
   }
 
-  console.log(w);
-
   return (
+    <div className="bg-photo">
     <div className="vertical-flex-center container">
       <div>
       <img src={logo} className="main-logo"/>
@@ -87,6 +85,7 @@ function App() {
         </div>
       </div>
       <p className="credits">Site by Kyle Thompson | Photo by Murphy Gerrasch</p>
+    </div>
     </div>
   );
 }

@@ -22,6 +22,16 @@
 }
 
 body {
+  background-color: #000;
+}
+
+.bg-photo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow-y: visible;
   background-image: url('./assets/site-bg.jpg');
   background-size: cover;
   background-position-x: center;
@@ -83,8 +93,13 @@ body {
 
 .container {
   align-items: stretch!important;
-  height: 100vh;
+  height: 100dvh;
   max-height: min(900px, 160vw);
+  width: 100vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .main-logo {
@@ -300,9 +315,6 @@ body {
   position: fixed;
   left: 50%;
   top: 50%;
-  width: calc(95vw - var(--computer-border-width) * 1.5);
-  height: calc(100vh - var(--computer-border-width) * 4 - 110px);
-  max-height: calc(min(900px, 160vw) - var(--computer-border-width) * 5.5);
   transform: translate(-50%, -50%);
   border: 4px ridge;
   background-color:#fff;
@@ -358,6 +370,23 @@ body {
   font-size: 12px;
   user-select: none;
   cursor: pointer;
+}
+
+.main-window {
+  width: calc(95vw - var(--computer-border-width) * 1.5);
+  height: calc(100vh - var(--computer-border-width) * 4 - 110px);
+  max-height: calc(min(900px, 160vw) - var(--computer-border-width) * 5.5);
+}
+
+.popup-window > .window-body{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-family: System;
+  text-align: center;
+  line-height: 1.4;
+  gap: 10px;
+  background-color: #d2d2d2;
 }
 
 @keyframes openwindow {
@@ -838,6 +867,7 @@ input:focus, textarea:focus {
 .submit-row {
   display: flex;
   flex-direction: row-reverse;
+  align-items: center;
 }
 
 .submit-btn {
@@ -878,6 +908,12 @@ label {
   flex-grow: 2;
   display: flex;
   flex-direction: column;
+}
+
+.error-msg {
+  color: #cf2222;
+  font-family: Nokia;
+  padding: 0px 15px;
 }
 
 /* Custom Scrollbar */
@@ -1002,7 +1038,7 @@ div.scanlines {
     max-width: min(80vh, 800px);
   }
 
-  .window {
+  .main-window {
     width: calc(min(80vh, 800px) - var(--computer-border-width) * 2);
   }
 
@@ -1030,11 +1066,8 @@ div.scanlines {
 }
 
 @media screen and (aspect-ratio < 0.6), (min-height: 900px) {
-  .container {
-    margin-top: calc((100vh - min(900px, 160vw)) / 2);
-  }
 
-  .window {
+  .main-window {
     height: calc(min(900px, 160vw) - var(--computer-border-width) * 6);
   }
 
@@ -1121,7 +1154,7 @@ div.scanlines {
     --computer-border-width: 40px;
   }
 
-  .window {
+  .main-window {
     height: calc(min(900px, 160vw) - var(--computer-border-width) * 6.5);
   }
 
@@ -1192,7 +1225,7 @@ div.scanlines {
     background-color: rgba(0, 0, 0, 0.2);
   }
 
-  .window {
+  .main-window {
     width: calc(104vh - var(--computer-border-width));
     height: calc(104vh - (50vh / 2) - var(--computer-border-width) * 1.2);
   }
