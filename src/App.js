@@ -1,7 +1,6 @@
 import './App.css';
 import Icon from './icon';
 import SoundButton from './SoundButton';
-
 import { SoundContext } from './SoundContext';
 
 import logo from './assets/logo.png';
@@ -11,7 +10,6 @@ import epk from './assets/icons/epk-icon.png';
 import shows from './assets/icons/shows-icon.png';
 import socials from './assets/icons/socials-icon.png';
 import photos from './assets/icons/photos-icon.png';
-import { useState } from 'react';
 
 import Music from './Music';
 import Shows from './Shows';
@@ -19,10 +17,22 @@ import Socials from './Socials';
 import Photos from './Photos';
 import Contact from './Contact';
 
+import { useState } from 'react';
+
 function App() {
   
   const [soundOn, setSoundOn] = useState(true);
-  
+  const params = new URLSearchParams(window.location.search);
+  let w = null;
+
+  for(const [key, value] of params) {
+    console.log(key, value);
+    if(key === "w") {
+      w = value;
+    }
+  }
+
+  console.log(w);
 
   return (
     <div className="vertical-flex-center container">
@@ -54,29 +64,29 @@ function App() {
               <SoundContext.Provider value={soundOn}>
                 <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
                 <div className="icons">
-                  <Icon imgSrc={music} caption="Music">
+                  <Icon imgSrc={music} caption="Music" open={w === "music"}>
                     <Music />
                   </Icon>
-                  <Icon imgSrc={shows} caption="Shows">
+                  <Icon imgSrc={shows} caption="Shows" open={w === "shows"}>
                     <Shows />
                   </Icon>
-                  <Icon imgSrc={socials} caption="Socials">
+                  <Icon imgSrc={socials} caption="Socials" open={w === "socials"}>
                     <Socials />
                   </Icon>
-                  <Icon imgSrc={photos} caption="Media">
+                  <Icon imgSrc={photos} caption="Pics & Vids" open={w === "media"}>
                     <Photos />
                   </Icon>
-                  <Icon imgSrc={contact} caption="Contact">
+                  <Icon imgSrc={contact} caption="Contact" open={w === "contact"}>
                     <Contact />
                   </Icon>
-                  <Icon imgSrc={epk} caption="EPK">
+                  <Icon imgSrc={epk} caption="Media Kit" isLink={true} url="/epk">
                   </Icon>
                 </div>
               </SoundContext.Provider>
           </div>
         </div>
       </div>
-      <p className="credits">Site designed by Kyle Thompson</p>
+      <p className="credits">Site by Kyle Thompson | Photo by Murphy Gerrasch</p>
     </div>
   );
 }

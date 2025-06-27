@@ -126,7 +126,7 @@ const Music = () => {
 
     return (
         <div className="vertical-flex-center window-contents" ref={mainPage}>
-            {hoverTarget && <MouseTracker offset={{x:-95, y:-25}} mainPage={mainPage.current}>{hoverTarget}</MouseTracker>}
+            {hoverTarget && <MouseTracker mainPage={mainPage.current}>{hoverTarget}</MouseTracker>}
             <div className="music-logo">
                 <img src={fruitunes} />
             </div>

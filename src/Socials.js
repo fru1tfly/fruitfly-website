@@ -43,7 +43,7 @@ const PLATFORMS = [
     {
         title: 'Bluesky',
         img: bluesky,
-        link: 'https://bsky.app/profile/fruitflymusic.bsky.socia'
+        link: 'https://bsky.app/profile/fruitflymusic.bsky.social'
     }
 ];
 
@@ -72,7 +72,7 @@ const Socials = () => {
     return (
         <div ref={mainPage} className="vertical-flex-center window-contents">
             <img className="online-img" src={online} alt="Fruitfly Online" />
-            {hoverTarget && <MouseTracker offset={{x:0, y:-520}} mainPage={mainPage.current}>{hoverTarget}</MouseTracker>}
+            {hoverTarget && <MouseTracker mainPage={mainPage.current}>{hoverTarget}</MouseTracker>}
             <div className="platform-buttons">
                 {platformButtons}
             </div>

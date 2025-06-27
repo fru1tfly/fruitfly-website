@@ -6,10 +6,10 @@ import closeSfx from './assets/sfx/close.mp3';
 
 import { useAudio } from './Audio';
 
-const Window = ({ wrapperClass, wrapperContent, caption, children, isChild = false }) => {
+const Window = ({ wrapperClass, wrapperContent, caption, children, isChild = false, open = false }) => {
     const soundOn = useContext(SoundContext);
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(open);
     const [isOpening, setIsOpening] = useState(false);
 
     const playClickSfx = useAudio(clickSfx);
