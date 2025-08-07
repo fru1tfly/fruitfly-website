@@ -15,7 +15,7 @@ import youtube from './assets/streaming/youtube.png';
 import fruitunes from './assets/fruitunes.png';
 import clickSfx from './assets/sfx/click.mp3';
 
-import { useState, useContext, useEffect, useRef } from 'react';
+import { useState, useContext, useRef } from 'react';
 
 import { MouseTracker } from './MouseTracker';
 import { SoundContext } from './SoundContext';
@@ -95,7 +95,6 @@ const ALBUMS = [
 
 const Music = () => {
 
-    const [selectedAlbum, setSelectedAlbum] = useState(null);
     const [hoverTarget, setHoverTarget] = useState(null);
     const soundOn = useContext(SoundContext);
     const playClickSfx = useAudio(clickSfx);
@@ -128,7 +127,7 @@ const Music = () => {
         <div className="vertical-flex-center window-contents" ref={mainPage}>
             {hoverTarget && <MouseTracker mainPage={mainPage.current}>{hoverTarget}</MouseTracker>}
             <div className="music-logo">
-                <img src={fruitunes} />
+                <img src={fruitunes} alt="FruitTunes" />
             </div>
             <div className="music-buttons">
                 {serviceButtons}

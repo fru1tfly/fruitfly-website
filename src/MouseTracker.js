@@ -20,7 +20,7 @@ export const MouseTracker = ({ children, mainPage, offset = { x: 0, y: 0} }) => 
             document.removeEventListener('mousemove', handler);
             document.removeEventListener('mouseenter', handler);
         }
-    }, [offset.x, offset.y]);
+    }, [offset.x, offset.y, mainPage]);
 
     return createPortal(
         <div className="tooltip" ref={element}>

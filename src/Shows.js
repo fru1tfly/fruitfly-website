@@ -6,7 +6,7 @@ import okcool from './assets/shows/okcool.jpg';
 
 import directions from './assets/directions.png';
 
-import { useRef, useContext } from 'react';
+import { useContext } from 'react';
 import { SoundContext } from "./SoundContext";
 import clickSfx from './assets/sfx/click.mp3';
 import { useAudio } from './Audio';
@@ -15,52 +15,14 @@ import Window from './Window';
 
 const SHOWS = [
     {
-        title: 'Foundation Room @ HoB',
-        otherActs: ['The Dreaded Laramie'],
-        date: '6/28',
-        price: 'FREE',
-        doors: '8PM',
-        showTime: '9PM',
-        ticketLink: 'https://www.houseofblues.com/cleveland/EventDetail?tmeventid=0&offerid=159388',
-        flyer: foundationroom,
-        address: '308 Euclid Ave, Cleveland, OH',
-        ageRestriction: '21+'
-    },
-    {
-        title: 'FPR Fest 14',
-        venue: 'Cafe Ah Roma - Berea',
-        date: '7/12',
-        price: '$15 (suggested)',
-        setTime: '5PM',
-        showTime: '2PM - 10PM',
-        flyer: fpr,
-        address: '38 W Bridge St, Berea, OH'
-    },
-    {
-        title: 'Happy Dog',
-        otherActs: ['Sure Machine', 'Yes, Dear'],
-        date: '7/19',
-        showTime: '9PM',
-        flyer: happydog,
-        price: '$10',
-        ticketLink: 'https://app.opendate.io/e/yes-dear-sure-machine-fruitfly-july-19-2025-605465',
-        address: '5801 Detroit Ave, Cleveland, OH'
-    },
-    {
-        title: 'Brothers Lounge',
-        otherActs: ['Badvril', 'TBA'],
-        date: '7/30',
-        flyer: brothers,
-        address: '11609 Detroit Ave, Cleveland, OH'
-    },
-    {
         title: 'Grog Shop',
         otherActs: ['OK Cool', 'TunnelVision'],
         date: '8/20',
         doors: '7PM',
         showTime: '8PM',
         flyer: okcool,
-        address: '2785 Euclid Heights Blvd, Cleveland Heights, OH'
+        address: '2785 Euclid Heights Blvd, Cleveland Heights, OH',
+        ticketLink: 'https://grogshop.gs/tm-event/ok-cool-tunnel-vision-fruitfly/'
     }
 ];
 
@@ -121,12 +83,12 @@ const Shows = () => {
                     </div>
                         <div className="show-ticket-link">
                             {show.address && show.address !== "House" &&
-                                <a href={`https://maps.google.com/?q=${show.address}`} onClick={playClick} target="_blank">
+                                <a href={`https://maps.google.com/?q=${show.address}`} onClick={playClick} target="_blank" rel="noreferrer">
                                     <img src={directions} alt="Directions" />
                                 </a>
                             }
                             {show.ticketLink && 
-                                <a href={show.ticketLink} target="_blank" onClick={playClick}>Tickets</a>
+                                <a href={show.ticketLink} target="_blank" onClick={playClick} rel="noreferrer">Tickets</a>
                             }
                             {show.address && show.address === "House" &&
                                 <span>Contact For Address</span>
@@ -139,8 +101,6 @@ const Shows = () => {
             </div>
         );
     });
-
-    const win = useRef(null);
 
     return (
         <div className="show-cards">

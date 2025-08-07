@@ -208,7 +208,7 @@ const PhotoFolder = ({ photoData }) => {
                 }
                 {photoData.hasLowRes &&
                     <div className="download-icon-link">
-                        <img src={download} className="download-icon" onClick={downloadPhoto} />
+                        <img src={download} className="download-icon" onClick={downloadPhoto} alt="Download" />
                         {showHighResTooltip && 
                             <div className="high-res-tooltip">
                                 <a href={highResSrc} download onClick={() => setShowHighResTooltip(false)}>Full Resolution</a>
@@ -219,7 +219,7 @@ const PhotoFolder = ({ photoData }) => {
                 }
                 {!photoData.hasLowRes && 
                     <a href={imgSrc} className="download-icon-link" download>
-                        <img src={download} className="download-icon" onClick={downloadPhoto} />
+                        <img src={download} className="download-icon" onClick={downloadPhoto} alt="Download" />
                     </a>
                 }
             </div>

@@ -35,7 +35,7 @@ function App() {
     <div className="bg-photo">
     <div className="vertical-flex-center container">
       <div>
-      <img src={logo} className="main-logo"/>
+      <img src={logo} className="main-logo" alt="Fruitfly"/>
       </div>
       <div className="computer-border center-x">
         <div className="computer-border-row">

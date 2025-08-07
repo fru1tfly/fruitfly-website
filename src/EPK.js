@@ -36,7 +36,7 @@ const EPK = () => {
 
     const pressLinks = PRESS.map(p => (
         <a href={p.link} className="press-link-btn">
-            <img className="press-link-img" src={p.imgSrc}/>
+            <img className="press-link-img" src={p.imgSrc} alt={p.title}/>
             <div className="press-link-caption">
                 <header className="press-link-header">{p.title}</header>
                 <div>{p.content}</div>
@@ -101,8 +101,8 @@ const EPK = () => {
                     <section className="epk-text">
                         <h2>Music</h2>
                         <div className="music-players">
-                            <iframe src="https://open.spotify.com/embed/album/7lc9htVjwzjTYWjaeWvbe3?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                            <iframe src="https://open.spotify.com/embed/album/2NHdCL5pCuwzF1giPeAhwW?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                            <iframe title="WtWiN" src="https://open.spotify.com/embed/album/7lc9htVjwzjTYWjaeWvbe3?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                            <iframe title="RoF" src="https://open.spotify.com/embed/album/2NHdCL5pCuwzF1giPeAhwW?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                         </div>
                     </section>
                 </div>
