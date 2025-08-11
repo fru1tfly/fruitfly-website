@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Window from './Window';
+import Window from 'components/Window';
 
-import video from './assets/icons/video.png';
-import photo from './assets/icons/folder.png';
-import photoArrow from './assets/photo-arrow.png';
-import download from './assets/download-button.png';
+import video from 'assets/icons/video.png';
+import photo from 'assets/icons/folder.png';
+import photoArrow from 'assets/photo-arrow.png';
+import download from 'assets/download-button.png';
 
 const MEDIA = [
     {

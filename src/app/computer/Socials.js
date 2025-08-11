@@ -1,17 +1,17 @@
-import clickSfx from './assets/sfx/click.mp3';
+import clickSfx from 'assets/sfx/click.mp3';
 
-import instagram from './assets/socials/instagram.png';
-import tiktok from './assets/socials/tiktok.png';
-import youtube from './assets/socials/youtube.png';
-import twitch from './assets/socials/twitch.png';
-import facebook from './assets/socials/facebook.png';
-import bluesky from './assets/socials/bluesky.png';
+import instagram from 'assets/socials/instagram.png';
+import tiktok from 'assets/socials/tiktok.png';
+import youtube from 'assets/socials/youtube.png';
+import twitch from 'assets/socials/twitch.png';
+import facebook from 'assets/socials/facebook.png';
+import bluesky from 'assets/socials/bluesky.png';
 
-import online from './assets/online.png';
+import online from 'assets/online.png';
 
-import { MouseTracker } from './MouseTracker';
-import { SoundContext } from './SoundContext';
-import { useAudio } from './Audio';
+import { MouseTracker } from 'components/MouseTracker';
+import { SoundContext } from 'stores/SoundContext';
+import { useAudio } from 'hooks/Audio';
 import { useRef, useState, useContext } from 'react';
 
 const PLATFORMS = [

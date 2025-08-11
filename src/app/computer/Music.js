@@ -1,25 +1,25 @@
-import iwflt from './assets/album art/iwflt.jpg';
-import wtwin from './assets/album art/wtwin.jpg';
-import bl from './assets/album art/bl.jpg';
-import pnpp from './assets/album art/pnpp.jpg';
-import rof from './assets/album art/rof.jpg';
-import tw from './assets/album art/tw.jpg';
+import iwflt from 'assets/album art/iwflt.jpg';
+import wtwin from 'assets/album art/wtwin.jpg';
+import bl from 'assets/album art/bl.jpg';
+import pnpp from 'assets/album art/pnpp.jpg';
+import rof from 'assets/album art/rof.jpg';
+import tw from 'assets/album art/tw.jpg';
 
-import spotify from './assets/streaming/spotify.png';
-import bandcamp from './assets/streaming/bandcamp.png';
-import amazon from './assets/streaming/amazon.png';
-import tidal from './assets/streaming/tidal.png';
-import apple from './assets/streaming/apple music.png';
-import youtube from './assets/streaming/youtube.png';
+import spotify from 'assets/streaming/spotify.png';
+import bandcamp from 'assets/streaming/bandcamp.png';
+import amazon from 'assets/streaming/amazon.png';
+import tidal from 'assets/streaming/tidal.png';
+import apple from 'assets/streaming/apple music.png';
+import youtube from 'assets/streaming/youtube.png';
 
-import fruitunes from './assets/fruitunes.png';
-import clickSfx from './assets/sfx/click.mp3';
+import fruitunes from 'assets/fruitunes.png';
+import clickSfx from 'assets/sfx/click.mp3';
 
 import { useState, useContext, useRef } from 'react';
 
-import { MouseTracker } from './MouseTracker';
-import { SoundContext } from './SoundContext';
-import { useAudio } from './Audio';
+import { MouseTracker } from 'components/MouseTracker';
+import { SoundContext } from 'stores/SoundContext';
+import { useAudio } from 'hooks/Audio';
 
 const SERVICES = [
     {

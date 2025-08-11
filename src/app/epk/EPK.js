@@ -1,5 +1,8 @@
-import './EPK.css';
+import 'app/styles/EPK.css';
 import { Link } from 'react-router';
+
+import americanPancake from 'assets/epk/americanPancake.jfif';
+import localLoDown from 'assets/epk/localLoDown.png';
 
 const PRESS = [
     {
@@ -21,14 +24,14 @@ const PRESS = [
         content: 'Interview',
         date: 'Nov 2023',
         link: "https://www.youtube.com/watch?v=N13g0VPGKrQ",
-        imgSrc: "https://scontent-ord5-3.xx.fbcdn.net/v/t39.30808-6/274174897_104328542187502_5069594869076115426_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=JMmdkLo_QfQQ7kNvwHyf7IT&_nc_oc=AdnIC_83rdiXJ-HbNFKvuqePGPNQn7ORsgPGrg_JgSrwILXaAsxyQjissSpeKdNj6FDeICPaQMDpquT4GUwbjw00&_nc_zt=23&_nc_ht=scontent-ord5-3.xx&_nc_gid=a8yij2HyFCWPmXHsTlSq4g&oh=00_AfNx43BzhyyaZL8_HJbrifk4xfrZWYF5FIkr796ptEoAcA&oe=68638EBB"
+        imgSrc: localLoDown
     },
     {
         title: 'American Pancake',
         content: 'Review',
         date: 'May 2021',
         link: "https://www.americanpancake.com/2021/05/fruitfly-and-gravitational-kinetic-pull.html?fbclid=IwAR2Rk1oTIKi157bZg72Og6uWNpyNElZMAee9PM1pwdvpZ4aq4Se3HSyjSg4",
-        imgSrc: "https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/277783786_323597026424888_1699208376794425719_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=8iicg9NPT0kQ7kNvwHB4qGw&_nc_oc=AdkUpvcRwPnjNkf4n-L0BFjH5lI0OHcgHIygN5gQT7GgBS051HtknsbRN_Ak24ANy85ysClgKrRVDOwfxFU6AfH6&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&_nc_gid=LF5qpKtWr-VBJjyvCcZ8tg&oh=00_AfOTIHLpMt6XupS69myebj6buHhnPXwQmtvuurQWBgmQyQ&oe=68637B15"
+        imgSrc: americanPancake
     }
 ];
 

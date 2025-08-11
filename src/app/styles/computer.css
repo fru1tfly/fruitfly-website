@@ -8,17 +8,17 @@
 
 @font-face {
   font-family: 'DOS';
-  src: url('./assets/fonts/dos.ttf');
+  src: url('../../assets/fonts/dos.ttf');
 }
 
 @font-face {
   font-family: 'Nokia';
-  src: url('./assets/fonts/nokia.ttf');
+  src: url('../../assets/fonts/nokia.ttf');
 }
 
 @font-face {
   font-family: 'System';
-  src: url('./assets/fonts/system.otf');
+  src: url('../../assets/fonts/system.otf');
 }
 
 body {
@@ -32,7 +32,7 @@ body {
   width: 100vw;
   height: 100dvh;
   overflow-y: visible;
-  background-image: url('./assets/site-bg.jpg');
+  background-image: url('../../assets/site-bg.jpg');
   background-size: cover;
   background-position-x: center;
   background-attachment: fixed;
@@ -153,7 +153,7 @@ body {
 }
 
 .computer-corner-top {
-  background-image: url('./assets/computer-background/computer-corner-top.png');
+  background-image: url('../../assets/computer-background/computer-corner-top.png');
   background-size: contain;
   width: var(--computer-border-width);
   aspect-ratio: 0.9226;
@@ -162,14 +162,14 @@ body {
 }
 
 .computer-top {
-  background-image: url('./assets/computer-background/computer-top.png');
+  background-image: url('../../assets/computer-background/computer-top.png');
   flex-grow: 1;
   background-size: 100% calc(var(--computer-border-width) / 0.9226);
   margin: 0 -1px;
 }
 
 .computer-side {
-  background-image: url('./assets/computer-background/computer-side.png');
+  background-image: url('../../assets/computer-background/computer-side.png');
   width: var(--computer-border-width);
   min-height: 200px;
   background-size: var(--computer-border-width) 100%;
@@ -177,7 +177,7 @@ body {
 }
 
 .computer-corner-bottom {
-  background-image: url('./assets/computer-background/computer-corner-bottom.png');
+  background-image: url('../../assets/computer-background/computer-corner-bottom.png');
   background-size: contain;
   width: var(--computer-border-width);
   aspect-ratio: 0.4254724;
@@ -186,14 +186,14 @@ body {
 }
 
 .computer-bottom {
-  background-image: url('./assets/computer-background/computer-bottom.png');
+  background-image: url('../../assets/computer-background/computer-bottom.png');
   flex-grow: 1;
   background-size: 100% calc(var(--computer-border-width) / 0.4234724);
   margin: 0 -1px;
 }
 
 .computer-logo {
-  background-image: url('./assets/computer-background/fr.png');
+  background-image: url('../../assets/computer-background/fr.png');
   width: calc(var(--computer-border-width) * 1.5);
   aspect-ratio: 3.59333;
   background-size: contain;
@@ -204,13 +204,13 @@ body {
 }
 
 .computer-floppy-band {
-  background-image: url('./assets/computer-background/floppy-band.png');
+  background-image: url('../../assets/computer-background/floppy-band.png');
   flex-grow: 1;
   background-size: 100% calc(var(--computer-border-width) / 6);
 }
 
 .computer-floppy-drive {
-  background-image: url('./assets/computer-background/floppy-drive.png');
+  background-image: url('../../assets/computer-background/floppy-drive.png');
   height: calc(var(--computer-border-width) / 6);
   aspect-ratio: 29.15;
   background-size: contain;
@@ -442,7 +442,7 @@ body {
   z-index: -1;
   overflow: hidden;
   position: relative;
-  background-image: url('./assets/background.png');
+  background-image: url('../../assets/background.png');
 }
 .scanlines:before,
 .scanlines:after {
@@ -934,25 +934,25 @@ label {
   border: 2px outset;
   width: 17px;
   height: 17px;
-  background-image: url('./assets/scroll-arrow.png');
+  background-image: url('../../assets/scroll-arrow.png');
   background-position: center;
   background-size: contain;
 }
 
 ::-webkit-scrollbar-button:single-button:horizontal:increment {
-  background-image: url('./assets/scroll-arrow-r.png');
+  background-image: url('../../assets/scroll-arrow-r.png');
 }
 
 ::-webkit-scrollbar-button:single-button:horizontal:decrement {
-  background-image: url('./assets/scroll-arrow-l.png');
+  background-image: url('../../assets/scroll-arrow-l.png');
 }
 
 ::-webkit-scrollbar-button:single-button:vertical:increment {
-  background-image: url('./assets/scroll-arrow-d.png');
+  background-image: url('../../assets/scroll-arrow-d.png');
 }
 
 ::-webkit-scrollbar-button:single-button:vertical:decrement {
-  background-image: url('./assets/scroll-arrow-u.png');
+  background-image: url('../../assets/scroll-arrow-u.png');
 }
 
 

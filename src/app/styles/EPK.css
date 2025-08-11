@@ -1,11 +1,11 @@
 @font-face {
   font-family: epk-sans;
-  src: url('./assets/fonts/epk sans.ttf');
+  src: url('../../assets/fonts/epk sans.ttf');
 }
 
 @font-face {
   font-family: epk-serif;
-  src: url('./assets/fonts/epk serif.ttf');
+  src: url('../../assets/fonts/epk serif.ttf');
 }
 
 body {

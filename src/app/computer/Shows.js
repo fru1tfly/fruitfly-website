@@ -1,17 +1,13 @@
-import foundationroom from './assets/shows/foundationroom.jpg';
-import fpr from './assets/shows/fpr.jpg';
-import happydog from './assets/shows/happydog.JPG';
-import brothers from './assets/shows/brothers.jpg';
-import okcool from './assets/shows/okcool.jpg';
+import okcool from 'assets/shows/okcool.jpg';
 
-import directions from './assets/directions.png';
+import directions from 'assets/directions.png';
 
 import { useContext } from 'react';
-import { SoundContext } from "./SoundContext";
-import clickSfx from './assets/sfx/click.mp3';
-import { useAudio } from './Audio';
+import { SoundContext } from "stores/SoundContext";
+import clickSfx from 'assets/sfx/click.mp3';
+import { useAudio } from 'hooks/Audio';
 
-import Window from './Window';
+import Window from 'components/Window';
 
 const SHOWS = [
     {

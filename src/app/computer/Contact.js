@@ -1,13 +1,13 @@
 import { useRef, useState, useContext } from "react";
 import emailjs from '@emailjs/browser';
 
-import { SoundContext } from "./SoundContext";
-import { useAudio } from './Audio';
+import { SoundContext } from "stores/SoundContext";
+import { useAudio } from 'hooks/Audio';
 
-import Window from "./Window";
+import Window from "components/Window";
 
-import clickSfx from './assets/sfx/click.mp3';
-import sendSfx from './assets/sfx/send.mp3';
+import clickSfx from 'assets/sfx/click.mp3';
+import sendSfx from 'assets/sfx/send.mp3';
 
 
 const Contact = () => {
