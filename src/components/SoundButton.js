@@ -2,7 +2,7 @@ import on from 'assets/soundon.png';
 import off from 'assets/soundoff.png';
 import onSfx from 'assets/sfx/soundon.mp3';
 
-import { useAudio } from 'hooks/Audio';
+import { useAudio } from 'hooks/useAudio';
 
 const SoundButton = ({soundOn, setSoundOn}) => {
     const playOnSfx = useAudio(onSfx);

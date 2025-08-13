@@ -4,7 +4,7 @@ import { SoundContext } from "stores/SoundContext";
 import clickSfx from 'assets/sfx/click.mp3';
 import closeSfx from 'assets/sfx/close.mp3';
 
-import { useAudio } from 'hooks/Audio';
+import { useAudio } from 'hooks/useAudio';
 
 const Window = ({ wrapperClass, wrapperContent, caption, children, isChild = false, open = false, popup = false }) => {
     const soundOn = useContext(SoundContext);

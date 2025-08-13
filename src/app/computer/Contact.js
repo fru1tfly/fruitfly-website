@@ -2,7 +2,7 @@ import { useRef, useState, useContext } from "react";
 import emailjs from '@emailjs/browser';
 
 import { SoundContext } from "stores/SoundContext";
-import { useAudio } from 'hooks/Audio';
+import { useAudio } from 'hooks/useAudio';
 
 import Window from "components/Window";
 

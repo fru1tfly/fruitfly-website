@@ -11,7 +11,7 @@ import online from 'assets/online.png';
 
 import { MouseTracker } from 'components/MouseTracker';
 import { SoundContext } from 'stores/SoundContext';
-import { useAudio } from 'hooks/Audio';
+import { useAudio } from 'hooks/useAudio';
 import { useRef, useState, useContext } from 'react';
 
 const PLATFORMS = [

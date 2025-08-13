@@ -1,0 +1,78 @@
+:root {
+    --navbar-background: #466943;
+
+    --navbar-text: #eeffeb;
+    --navbar-text-shadow: #3e8666;
+    --navbar-accent: #6dad8f;
+    --navbar-accent-border: #384e44;
+
+    --navbar-active-text: #f5faf9;
+    --navbar-active-text-shadow: #62b38e;
+    --navbar-active-accent: #7edb67;
+    --navbar-active-accent-border: #3e8564;
+}
+
+.adminSidebar {
+    max-width: 250px;
+    background-color: var(--navbar-background);
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.3);
+    padding: 10px;
+}
+
+.logo {
+    width: 100%;
+    padding: 10px;
+}
+
+.navbarLink {
+    padding: 10px 15px 12px;
+
+
+    border: 3px solid var(--navbar-accent-border);
+    background-color: var(--navbar-accent);
+
+    border-radius: 8px;
+    border-bottom-width: 4px;
+
+    text-decoration: none;
+    color: var(--navbar-text);
+    font-family: epk-sans;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+
+    text-shadow: 0px 2px 0px var(--navbar-text-shadow);
+}
+
+.navbarLinkActive {
+    background-color: var(--navbar-active-accent);
+    border-color: var(--navbar-active-accent-border);
+    text-shadow: 0px 2px 0px var(--navbar-active-text-shadow);
+    color:var(--navbar-active-text);
+}
+
+.userInfo {
+    color: var(--navbar-text);
+    text-shadow: 0px 2px 0px var(--navbar-text-shadow);
+
+    font-size: 20px;
+    font-weight: 700;
+    font-family: epk-sans;
+    
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: baseline;
+    letter-spacing: 1px;
+}

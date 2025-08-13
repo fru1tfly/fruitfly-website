@@ -5,24 +5,18 @@ import directions from 'assets/directions.png';
 import { useContext } from 'react';
 import { SoundContext } from "stores/SoundContext";
 import clickSfx from 'assets/sfx/click.mp3';
-import { useAudio } from 'hooks/Audio';
+import { useAudio } from 'hooks/useAudio';
 
 import Window from 'components/Window';
-
-const SHOWS = [
-    {
-        title: 'Grog Shop',
-        otherActs: ['OK Cool', 'TunnelVision'],
-        date: '8/20',
-        doors: '7PM',
-        showTime: '8PM',
-        flyer: okcool,
-        address: '2785 Euclid Heights Blvd, Cleveland Heights, OH',
-        ticketLink: 'https://grogshop.gs/tm-event/ok-cool-tunnel-vision-fruitfly/'
-    }
-];
+import { useGet } from 'hooks/useGet';
+import { formatDate, formatTime } from 'utils/dates';
 
 const Shows = () => {
+
+    const [response, error] = useGet('/shows/upcoming');
+    const shows = response?.shows;
+
+    console.log(shows);
 
     const soundOn = useContext(SoundContext);
     const playClickSfx = useAudio(clickSfx);
@@ -43,7 +37,7 @@ const Shows = () => {
         }
     }
 
-    const showDetails = SHOWS.map(show => {
+    const showDetails = shows?.map(show => {
 
         const showFlyer = (
             <img src={show.flyer} className="show-flyer" alt={show.title} />
@@ -52,12 +46,12 @@ const Shows = () => {
         return (
             <div className="show-card">
                 <Window wrapperClass="show-flyer-container" wrapperContent={showFlyer} caption={show.title} isChild={true}>
-                    <img src={show.flyer} className="show-flyer-fullsize" alt={show.title}/>
+                    <img src={show.imgUrl} className="show-flyer-fullsize" alt={show.title}/>
                 </Window>
                 <div className="show-details">
                     <div className="show-title">
-                        <span>{show.title}</span>
-                        <span className="show-date">{show.date}</span>
+                        <span>{show.showName ? show.showName : show.venueName}</span>
+                        <span className="show-date">{formatDate(show.date)}</span>
                     </div>
                     <div className="show-title show-date"></div>
                     {show.otherActs && 
@@ -68,12 +62,12 @@ const Shows = () => {
                     }
                     <div className="show-details-gap"></div>
                     <div className="show-details-info">
-                        {show.doors && <span>Doors: {show.doors}</span>}
-                        {show.showTime && <span>Music: {show.showTime}</span>}
+                        {show.doorsTime && <span>Doors: {formatTime(show.doorsTime)}</span>}
+                        {show.showTime && <span>Music: {formatTime(show.showTime)}</span>}
                         {show.price && 
                             <div>{show.price}</div>
                         }
-                        {!show.doors && !show.showTime && !show.price &&
+                        {!show.doorsTime && !show.showTime && !show.price &&
                             <span>Details TBA</span>
                         }
                     </div>
@@ -83,13 +77,13 @@ const Shows = () => {
                                     <img src={directions} alt="Directions" />
                                 </a>
                             }
-                            {show.ticketLink && 
-                                <a href={show.ticketLink} target="_blank" onClick={playClick} rel="noreferrer">Tickets</a>
+                            {show.ticketUrl && 
+                                <a href={show.ticketUrl} target="_blank" onClick={playClick} rel="noreferrer">Tickets</a>
                             }
                             {show.address && show.address === "House" &&
                                 <span>Contact For Address</span>
                             }
-                            {show.ageRestriction &&
+                            {show.ageRestriction && show.ageRestriction !== 'All Ages' &&
                                 <span>({show.ageRestriction})</span>
                             }
                         </div>
@@ -100,12 +94,12 @@ const Shows = () => {
 
     return (
         <div className="show-cards">
-            {SHOWS.length > 0 &&
+            {shows?.length > 0 &&
                 <>
                     {showDetails}
                 </>
             }
-            {SHOWS.length === 0 &&
+            {shows?.length === 0 &&
                 <div className="no-shows-msg">There are no upcoming shows.</div>
             }
         </div>

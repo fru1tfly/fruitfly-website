@@ -32,7 +32,6 @@ export function useFormSubmit(data, errors, validations, endpoint, excludes = nu
                     payload[key] = data.value[key];
                 }
             }
-            console.log(payload);
 
             axios.post(
                 `${process.env.REACT_APP_API_ENDPOINT}${endpoint}`, 

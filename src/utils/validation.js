@@ -1,3 +1,5 @@
+import { FormValueType } from "types/FormValueType";
+
 export const requireField = (label, field) => {
     return !field && `${label} is required`;
 }
@@ -24,4 +26,19 @@ export const validateForm = (context, formData, validations) => {
     } 
 
     return errors;
+}
+
+const excludedTypes = [
+    FormValueType.HEADER
+];
+
+export const buildValidationObject = (fieldMapping) => {
+    let result = {};
+    for(const key of Object.keys(fieldMapping)) {
+        if(!excludedTypes.includes(fieldMapping[key].type)) {
+            result[key] = '';
+        }
+    }
+    console.log(result);
+    return result;
 }

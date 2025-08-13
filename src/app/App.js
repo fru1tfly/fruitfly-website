@@ -34,34 +34,34 @@ function App() {
 
   return (
     <div className="bg-photo">
-    <div className="vertical-flex-center container">
-      <div>
-        <img src={logo} className="main-logo" alt="Fruitfly"/>
+      <div className="vertical-flex-center container">
+        <div>
+          <img src={logo} className="main-logo" alt="Fruitfly"/>
         </div>
-          <ComputerBox>
-            <SoundContext.Provider value={soundOn}>
-              <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
-              <div className="icons">
-                <Icon imgSrc={music} caption="Music" open={w === "music"}>
-                  <Music />
-                </Icon>
-                <Icon imgSrc={shows} caption="Shows" open={w === "shows"}>
-                  <Shows />
-                </Icon>
-                <Icon imgSrc={socials} caption="Socials" open={w === "socials"}>
-                  <Socials />
-                </Icon>
-                <Icon imgSrc={photos} caption="Pics & Vids" open={w === "media"}>
-                  <Photos />
-                </Icon>
-                <Icon imgSrc={contact} caption="Contact" open={w === "contact"}>
-                  <Contact />
-                </Icon>
-                <Icon imgSrc={epk} caption="Media Kit" isLink={true} url="/epk">
-                </Icon>
-              </div>
-            </SoundContext.Provider>
-          </ComputerBox>
+        <ComputerBox>
+          <SoundContext.Provider value={soundOn}>
+            <SoundButton soundOn={soundOn} setSoundOn={setSoundOn} />
+            <div className="icons">
+              <Icon imgSrc={music} caption="Music" open={w === "music"}>
+                <Music />
+              </Icon>
+              <Icon imgSrc={shows} caption="Shows" open={w === "shows"}>
+                <Shows />
+              </Icon>
+              <Icon imgSrc={socials} caption="Socials" open={w === "socials"}>
+                <Socials />
+              </Icon>
+              <Icon imgSrc={photos} caption="Pics & Vids" open={w === "media"}>
+                <Photos />
+              </Icon>
+              <Icon imgSrc={contact} caption="Contact" open={w === "contact"}>
+                <Contact />
+              </Icon>
+              <Icon imgSrc={epk} caption="Media Kit" isLink={true} url="/epk">
+              </Icon>
+            </div>
+          </SoundContext.Provider>
+        </ComputerBox>
         <p className="credits">Site by Kyle Thompson | Photo by Murphy Gerrasch</p>
       </div>
     </div>

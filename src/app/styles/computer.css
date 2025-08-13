@@ -322,19 +322,19 @@ body {
 }
 
 .window-enter {
-  animation: openwindow 0.2s ease-out 1;
+  animation: openwindow 0.2s ease-out forwards;
 }
 
 .window-exit {
-  animation: closewindow 0.2s ease-in 1;
+  animation: closewindow 0.2s ease-in forwards;
 }
 
 .window-enter-child {
-  animation: openwindow-child 0.2s ease-out 1;
+  animation: openwindow-child 0.2s ease-out forwards;
 }
 
 .window-exit-child {
-  animation: closewindow-child 0.2s ease-in 1;
+  animation: closewindow-child 0.2s ease-in forwards;
 }
 
 .window-header {
@@ -827,7 +827,7 @@ iframe {
 }
 
 /* Contact Page */
-form {
+.container form {
   padding: 10px;
   background-color: #d2d2d2;
   display: flex;
