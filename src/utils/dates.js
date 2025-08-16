@@ -5,6 +5,7 @@ const defaultDateOptions = {
 
 export const formatDate = (date, options = defaultDateOptions) => {
     const base = new Date(date);
+    base.setMinutes(base.getMinutes() + base.getTimezoneOffset());
     const currentDate = new Date(Date.now());
 
     let dateOptions = {...options};
