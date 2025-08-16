@@ -857,6 +857,10 @@ input[type="date"], input[type="time"] {
         font-size: 16px!important;
         padding: 6px 10px !important;
     }
+
+    .form-section-body {
+        flex-direction: column;
+    }
 }
 
 @media screen and (min-width: 601px) {
