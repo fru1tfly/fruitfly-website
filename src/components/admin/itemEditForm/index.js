@@ -5,7 +5,7 @@ import Form from "components/admin/Form";
 
 import { ItemsContext } from "stores/ItemsContext";
 
-const ItemEditForm = ({ item, closeFunc, childDefinition, action, refresh }) => {
+const ItemEditForm = ({ item, closeFunc, action, refresh, childDefinition, childEndpoint }) => {
     const data = useContext(ItemsContext);
 
     const footer = () => (
@@ -17,16 +17,16 @@ const ItemEditForm = ({ item, closeFunc, childDefinition, action, refresh }) => 
 
     const callback = (response) => {
         closeFunc();
-        refresh();
+        refresh(response);
     }
 
     return (
         <Modal title={childDefinition ? '' : `${action} ${data.itemName}`} className="item-edit-modal" closeFunc={closeFunc}>
             <Form 
-                endpoint={`${data.endpoint}/${action.toLowerCase()}`}
+                endpoint={`${childEndpoint ?? data.endpoint}/${action.toLowerCase()}`}
                 disableAuto={true}
                 values={item}
-                definition={childDefinition ? childDefinition : data.itemDefinition}
+                definition={childDefinition ?? data.itemDefinition}
                 footer={footer}
                 callback={callback}
             />

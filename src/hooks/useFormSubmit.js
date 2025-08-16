@@ -14,6 +14,7 @@ export function useFormSubmit(data, errors, validations, endpoint, callback, exc
 
     const submit = (e) => {
         e.preventDefault();
+        e.stopPropagation();
         setServerError('');
 
         const submitErrors = validateForm(SUBMIT_VALIDATION_NAME, data.value, validations);

@@ -229,6 +229,12 @@ const FormLookup = memo(({ label, field, formState, formErrors }) => {
                         item={{}}
                         closeFunc={() => setCreating(false)}
                         childDefinition={field.lookupDefinition}
+                        childEndpoint={field.matchEndpoint}
+                        action="create"
+                        refresh={(response) => {
+                            selectItem(response.item);
+                            refresh();
+                        }}
                     />,
                     document.body
                 )
