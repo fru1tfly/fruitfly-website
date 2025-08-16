@@ -450,7 +450,7 @@
     border-bottom-width: 6px;
 
     animation: modalEnter 0.3s ease forwards;
-    max-height: 90vh;
+    max-height: 80vh;
     overflow-y: auto;
 }
 
