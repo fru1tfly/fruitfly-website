@@ -38,7 +38,7 @@ const Shows = () => {
                 </Window>
                 <div className="show-details">
                     <div className="show-title">
-                        <span>{show.showName ? show.showName : show.venueName}</span>
+                        <span>{show.showName ? show.showName : show.venueName} {show.city !== 'Cleveland' && <>({show.city})</>}</span>
                         <span className="show-date">{formatDate(show.date)}</span>
                     </div>
                     <div className="show-title show-date"></div>
