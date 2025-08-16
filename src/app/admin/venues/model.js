@@ -45,11 +45,12 @@ export const venueCard = (venue) => {
                 <span className="item-card-title-text">{venue.venueName}</span>
                 <span className="item-card-id">#{(venue.id + '').padStart(3, '0')}</span>
             </h4>
-            {venue.showName && <h5 className="item-card-subtitle">{venue.address}</h5>}
             <div className="item-card-pills">
                 <ItemCardPill value={venue.ageRestriction} label="Age Restriction" required={false} />
-                <ItemCardPill value={venue.city} label="City" />
+                <ItemCardPill value={venue.defaultImgUrl} label="Default Image" required={false} />
             </div>
+            {venue.address && <h5 className="item-card-subtitle">{venue.address} {venue.address === 'House' ? `(${venue.city})` : ''}</h5>}
+
         </>
     );
 };
