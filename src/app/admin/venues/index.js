@@ -3,23 +3,23 @@ import { useGet } from "hooks/useGet";
 import { buildValidationObject } from "utils/validation";
 
 import ItemListPage from "components/admin/ItemListPage";
-import { showMapping, showCard } from "./model";
-import { showValidations } from "./validation";
+import { venueMapping, venueCard } from "./model";
+import { venueValidations } from "./validation";
 import FormObject from "types/FormObject";
 
 import { ItemsContext, ItemsUpdateContext } from "stores/ItemsContext";
 
 
-const AdminShows = () => {
-    const endpoint = "/shows";
-    const { result, error, loading, refresh }= useGet(endpoint);
+const AdminVenues = () => {
+    const endpoint = "/venues";
+    const {result, error, loading, refresh} = useGet(endpoint);
 
     const itemsContext = {
-        title: "Shows",
-        itemName: "Show",
-        nameField: "showName",
+        title: "Venues",
+        itemName: "Venue",
+        nameField: "venueName",
         endpoint: endpoint,
-        itemDefinition: new FormObject(showCard, showMapping, showValidations),
+        itemDefinition: new FormObject(venueCard, venueMapping, venueValidations),
         items: result
     }
 
@@ -32,4 +32,4 @@ const AdminShows = () => {
     );
 };
 
-export default AdminShows;
+export default AdminVenues;

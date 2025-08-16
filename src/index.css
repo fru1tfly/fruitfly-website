@@ -12,10 +12,18 @@ code {
     monospace;
 }
 
-form {
+.form-body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-height: 70vh;
+  overflow-y: auto;
+
+  scrollbar-width: none;
+}
+
+.form-body::-webkit-scrollbar {
+  display: none;
 }
 
 .clickable {

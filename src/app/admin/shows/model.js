@@ -3,6 +3,9 @@ import TimeBadge from "components/admin/itemCard/TimeBadge";
 
 import { formatDate } from "utils/dates";
 import { FormValueType } from "types/FormValueType";
+import FormObject from "types/FormObject";
+import { venueCard, venueMapping } from "../venues/model";
+import { venueValidations } from "../venues/validation";
 
 
 export const showMapping = {
@@ -11,27 +14,42 @@ export const showMapping = {
         type: FormValueType.TEXT,
         info: "Defaults to Venue name if left blank"
     },
-    imgUrl: {
-        label: "Flyer",
-        type: FormValueType.IMAGE,
-        destination: "/photos/showFlyers",
-        children: {
-            venue_id: {
-                label: "Venue",
-                type: FormValueType.LOOKUP,
-                matchEndpoint: "/venues"
+    otherActs: {
+        label: "Other Acts",
+        type: FormValueType.MULTISELECT,
+        multiType: FormValueType.TEXT,
+        joinCharacter: ';'
+    },
+    thingy: {
+        type: FormValueType.COLUMNS,
+        columns: [
+            {
+                imgUrl: {
+                    type: FormValueType.IMAGE,
+                    label: "Flyer",
+                    destination: "/photos/showFlyers"
+                }
             },
-            date: {
-                type: FormValueType.DATE
-            },
-            ticketUrl: {
-                label: "Ticket Link",
-                type: FormValueType.URL
-            },
-            price: {
-                type: FormValueType.TEXT
+            {
+                venue_id: {
+                    label: "Venue",
+                    type: FormValueType.LOOKUP,
+                    matchEndpoint: "/venues",
+                    lookupLabel: "venueName",
+                    lookupDefinition: new FormObject(venueCard, venueMapping, venueValidations)
+                },
+                date: {
+                    type: FormValueType.DATE
+                },
+                ticketUrl: {
+                    label: "Ticket Link",
+                    type: FormValueType.URL
+                },
+                price: {
+                    type: FormValueType.TEXT
+                }
             }
-        }
+        ]
     },
     times: {
         type: FormValueType.HEADER,

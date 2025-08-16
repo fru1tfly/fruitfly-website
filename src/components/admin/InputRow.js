@@ -6,15 +6,15 @@ import { TYPING_DELAY } from 'stores/uiConstants';
 import ErrorTooltip from './ErrorTooltip';
 import { FormValueType } from 'types/FormValueType';
 
-const InputRow = memo(({ inputType, inputName, label, formState, formErrors, className }) => {
+const InputRow = memo(({ field, label, formState, formErrors, className }) => {
     const [closing, setIsClosing] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
-    const errorData = formErrors?.value[inputName];
+    const errorData = formErrors?.value[field.key];
     const hasError = errorData?.length > 0;
     const errorMessage = hasError ? errorData[0] : ''; 
 
-    const isPassword = inputType === FormValueType.PASSWORD;
+    const isPassword = field.type === FormValueType.PASSWORD;
     const passwordIconClassName = `fa-solid fa-eye${showPassword ? '-slash' : ''} show-password`;
 
     const typingTimeout = useRef();
@@ -24,29 +24,29 @@ const InputRow = memo(({ inputType, inputName, label, formState, formErrors, cla
 
         clearTimeout(typingTimeout.current);
         typingTimeout.current = setTimeout(() => {
-            const realTimeErrors = validateField("realTime", inputName, {...formState?.value, [id]: value}, signUpValidations);
+            const realTimeErrors = validateField("realTime", field.key, {...formState?.value, [id]: value}, signUpValidations);
             formErrors?.setter((prev) => ({...prev, [id]: realTimeErrors.length > 0 ? realTimeErrors : [] }));
             setIsClosing(realTimeErrors.length === 0 && errorMessage);
         }, TYPING_DELAY);
     }
 
     const getFormattedValue = (value) => {
-        if (inputType === FormValueType.DATE) {
-            return value.slice(0, 10);
+        if (field.type === FormValueType.DATE) {
+            return value?.slice(0, 10);
         }
         return value;
     }
-    
+
     return (
         <div className={className}>
-            <label htmlFor={inputName}>{label}</label>
+            {label && <label htmlFor={field.key}>{label}</label>}
             <section className="login-input-row">
                 <div className="login-input-container">
                     <input 
-                        type={(isPassword && showPassword) ? FormValueType.TEXT : inputType}
-                        id={inputName}
+                        type={(isPassword && showPassword) ? FormValueType.TEXT : field.type}
+                        id={field.key}
                         className={`login-input ${errorMessage && 'login-input-error'}`}
-                        value={getFormattedValue(formState?.value[inputName])}
+                        value={getFormattedValue(formState?.value[field.key]) ?? field.placeholder}
                         onChange={handleValueChange}
                     />
                     {isPassword && 

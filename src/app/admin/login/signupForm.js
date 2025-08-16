@@ -2,6 +2,9 @@
 import { signUpValidations } from './validation';
 import Form from 'components/admin/Form';
 import { FormValueType } from 'types/FormValueType';
+import { getUserInfo } from 'utils';
+import { useContext } from 'react';
+import { UserUpdateContext } from 'stores/UserContext';
 
 const fieldMapping = {
     username: {
@@ -20,6 +23,7 @@ const fieldMapping = {
 };
 
 const SignUpForm = ({ setVisible }) => {
+    const setUserInfo = useContext(UserUpdateContext);
 
     const formHeader = (serverError) => (
         <>
@@ -42,12 +46,18 @@ const SignUpForm = ({ setVisible }) => {
         validations: signUpValidations
     }
 
+    const callback = (response) => {
+        sessionStorage.setItem("jwt", response.token);
+        setUserInfo(getUserInfo());
+    }
+
     return (
         <Form 
             definition={definition}
             endpoint="/users/signup"
             header={formHeader}
             footer={formFooter}
+            callback={callback}
         />
     );
 };

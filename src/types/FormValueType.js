@@ -7,7 +7,9 @@ export class FormValueType {
     static #_TIME = 'time';
     static #_NUMBER = 'number';
     static #_IMAGE = 'image';
+    static #_MULTISELECT = 'multiselect';
     static #_HEADER = 'header';
+    static #_COLUMNS = 'columns';
 
     static get TEXT() { return this.#_TEXT; }
     static get PASSWORD() { return this.#_PASSWORD; }
@@ -17,5 +19,7 @@ export class FormValueType {
     static get TIME() { return this.#_TIME; }
     static get NUMBER() { return this.#_NUMBER; }
     static get IMAGE() { return this.#_IMAGE; }
+    static get MULTISELECT() { return this.#_MULTISELECT; }
     static get HEADER() { return this.#_HEADER; }
+    static get COLUMNS() { return this.#_COLUMNS; }
 }

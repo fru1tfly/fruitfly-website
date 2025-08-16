@@ -3,15 +3,14 @@ import axios from 'stores/axios';
 
 import { SPINNER_DEPLAY } from 'stores/uiConstants';
 import { validateForm } from 'utils/validation';
-import { getUserInfo } from 'utils';
+import { getAuthToken, getUserInfo } from 'utils';
 
 import { UserUpdateContext } from 'stores/UserContext';
 
 const SUBMIT_VALIDATION_NAME = "onSubmit";
-export function useFormSubmit(data, errors, validations, endpoint, excludes = null) {
+export function useFormSubmit(data, errors, validations, endpoint, callback, excludes = null) {
     const [isLoading, setIsLoading] = useState(false);
     const [serverError, setServerError] = useState();
-    const setUserInfo = useContext(UserUpdateContext);
 
     const submit = (e) => {
         e.preventDefault();
@@ -35,13 +34,13 @@ export function useFormSubmit(data, errors, validations, endpoint, excludes = nu
 
             axios.post(
                 `${process.env.REACT_APP_API_ENDPOINT}${endpoint}`, 
-                payload
+                payload,
+                { headers: { token: getAuthToken() }}
             ).then((res) => {
                 clearTimeout(spinnerDisplay);
                 setIsLoading(false);
 
-                sessionStorage.setItem("jwt", res.data.token);
-                setUserInfo(getUserInfo());
+                callback(res.data);
             }).catch((err) => {
                 clearTimeout(spinnerDisplay);
                 setIsLoading(false);

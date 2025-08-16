@@ -13,10 +13,8 @@ import { formatDate, formatTime } from 'utils/dates';
 
 const Shows = () => {
 
-    const [response, error] = useGet('/shows/upcoming');
-    const shows = response?.shows;
-
-    console.log(shows);
+    const { result, error, loading, refresh} = useGet('/shows/upcoming');
+    const shows = result?.shows;
 
     const soundOn = useContext(SoundContext);
     const playClickSfx = useAudio(clickSfx);

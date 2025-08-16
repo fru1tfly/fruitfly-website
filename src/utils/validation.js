@@ -39,6 +39,5 @@ export const buildValidationObject = (fieldMapping) => {
             result[key] = '';
         }
     }
-    console.log(result);
     return result;
 }

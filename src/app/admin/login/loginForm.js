@@ -1,6 +1,9 @@
 import { logInValidations } from './validation';
 import { FormValueType } from 'types/FormValueType';
 import Form from 'components/admin/Form';
+import { getUserInfo } from 'utils';
+import { useContext } from 'react';
+import { UserUpdateContext } from 'stores/UserContext';
 
 const fieldMapping = {
     username: {
@@ -12,6 +15,7 @@ const fieldMapping = {
 };
 
 const LoginForm = ({ setVisible }) => {
+    const setUserInfo = useContext(UserUpdateContext);
 
     const formHeader = (serverError) => (
         <>
@@ -32,12 +36,18 @@ const LoginForm = ({ setVisible }) => {
         validations: logInValidations
     }
 
+    const callback = (response) => {
+        sessionStorage.setItem("jwt", response.token);
+        setUserInfo(getUserInfo());
+    }
+
     return (
         <Form 
             definition={definition}
             endpoint="/users/login"
             header={formHeader}
             footer={formFooter}
+            callback={callback}
         />
     );
 };

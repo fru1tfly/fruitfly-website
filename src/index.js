@@ -8,6 +8,7 @@ import EPK from 'app/epk/EPK';
 import Admin from 'app/admin/Admin';
 import AdminHome from 'app/admin/home';
 import AdminShows from 'app/admin/shows';
+import AdminVenues from 'app/admin/venues';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +20,7 @@ root.render(
         <Route path="admin" element={<Admin />}>
           <Route index path="home" element={<AdminHome />} />
           <Route path="shows" element={<AdminShows />} />
+          <Route path="venues" element={<AdminVenues />} />
         </Route>
       </Routes>
     </BrowserRouter>

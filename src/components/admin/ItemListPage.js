@@ -3,12 +3,18 @@ import ItemCard from "./itemCard";
 import ItemEditForm from "./itemEditForm";
 
 import { ItemsContext } from "stores/ItemsContext";
+import ItemDeleteForm from "./itemDeleteForm";
 
-const ItemListPage = () => {
+const ItemListPage = ({ refresh }) => {
 
     const data = useContext(ItemsContext);
+    const [creating, setCreating] = useState();
     const [editing, setEditing] = useState();
     const [deleting, setDeleting] = useState();
+
+    const createItem = () => {
+        setCreating({});
+    }
 
     const editItem = (item) => {
         setEditing(item);
@@ -20,15 +26,31 @@ const ItemListPage = () => {
 
     return (
         <div className="item-list-page-container">
+            {creating && 
+                <ItemEditForm 
+                    action="Create"
+                    closeFunc={() => setCreating(false)}
+                    refresh={refresh}
+                />
+            }
             {editing && 
                 <ItemEditForm 
+                    action="Edit"
                     item={editing} 
-                    closeFunc={() => setEditing(false)}
+                    closeFunc={() => {setEditing(false)}}
+                    refresh={refresh}
+                />
+            }
+            {deleting && 
+                <ItemDeleteForm 
+                    item={deleting} 
+                    closeFunc={() => {setDeleting(false)}}
+                    refresh={refresh}
                 />
             }
             <h1 className="item-list-page-title">
                 <span className="item-list-page-title-text">{data.title}</span>
-                <button className="item-list-page-create-btn item-card-success-btn">
+                <button className="item-list-page-create-btn item-card-success-btn" onClick={createItem}>
                     <i className="fa-solid fa-plus"></i>
                     <span>Create {data.itemName}</span>
                 </button>
