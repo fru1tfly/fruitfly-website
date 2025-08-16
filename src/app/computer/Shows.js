@@ -42,11 +42,12 @@ const Shows = () => {
                         <span className="show-date">{formatDate(show.date)}</span>
                     </div>
                     <div className="show-title show-date"></div>
+                    {show.showName && <div className="show-subtitle">{show.venueName}</div>}
                     {show.otherActs && 
                         <div className="show-subtitle">{`w/${show.otherActs.join(', ')}`}</div>
                     }
-                    {show.venue && show.setTime &&
-                        <div className="show-subtitle">{show.venue} | Fruitfly at {show.setTime}</div>
+                    {show.venueName && show.setTime &&
+                        <div className="show-subtitle">{show.venueName} | Fruitfly at {show.setTime}</div>
                     }
                     <div className="show-details-gap"></div>
                     <div className="show-details-info">
