@@ -49,7 +49,6 @@ export function normalizeFormData(data, mapping) {
     const newValues = {...data.value};
     for(const [key, value] of Object.entries(newValues)) {
         const field = findKeyInMapping(key, mapping);
-        console.log(field, key, value);
 
         if (value && field && field.type === FormValueType.MULTISELECT) {
             newValues[key] = value.join(mapping[key].joinCharacter);
@@ -61,8 +60,6 @@ export function normalizeFormData(data, mapping) {
             delete newValues[key];
         }
     }
-
-    console.log(newValues);
 
     return {
         value: newValues,

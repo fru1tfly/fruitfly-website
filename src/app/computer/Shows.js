@@ -38,7 +38,7 @@ const Shows = () => {
     const showDetails = shows?.map(show => {
 
         const showFlyer = (
-            <img src={show.flyer} className="show-flyer" alt={show.title} />
+            <img src={show.imgUrl} className="show-flyer" alt={show.title} />
         );
 
         return (
