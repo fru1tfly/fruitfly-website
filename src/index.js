@@ -6,7 +6,6 @@ import './index.css';
 import App from 'app/App';
 import EPK from 'app/epk/EPK';
 import Admin from 'app/admin/Admin';
-import AdminHome from 'app/admin/home';
 import AdminShows from 'app/admin/shows';
 import AdminVenues from 'app/admin/venues';
 
@@ -18,7 +17,6 @@ root.render(
         <Route index element={<App />} />
         <Route path="epk" element={<EPK />} />
         <Route path="admin" element={<Admin />}>
-          <Route index path="home" element={<AdminHome />} />
           <Route path="shows" element={<AdminShows />} />
           <Route path="venues" element={<AdminVenues />} />
         </Route>

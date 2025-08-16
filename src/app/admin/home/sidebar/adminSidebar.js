@@ -20,7 +20,6 @@ const AdminSidebar = () => {
             <div className="img-container">
                 <img src={boyComputer} alt="Fruitfly" className={styles.logo} />
             </div>
-            <NavLink to="home" className={navbarClass}><i className="fa-solid fa-house"></i><span>Home</span></NavLink>
             <NavLink to="shows" className={navbarClass}><i className="fa-solid fa-ticket"></i><span>Shows</span></NavLink>
             <NavLink to="venues" className={navbarClass}><i className="fa-solid fa-people-roof"></i><span>Venues</span></NavLink>
         </nav>
