@@ -21,7 +21,9 @@ const AdminSidebar = () => {
                 <span>{userInfo.username}</span>
             </div>
             <div className="img-container">
-                <img src={boyComputer} alt="Fruitfly" className={styles.logo} />
+                <a href="https://fruitfly.band">
+                    <img src={boyComputer} alt="Fruitfly" className={styles.logo} />
+                </a>
             </div>
             <NavLink to="shows" className={navbarClass} onClick={() => setMobileIsOpen(false)}><i className="fa-solid fa-ticket"></i><span>Shows</span></NavLink>
             <NavLink to="venues" className={navbarClass} onClick={() => setMobileIsOpen(false)}><i className="fa-solid fa-people-roof"></i><span>Venues</span></NavLink>
