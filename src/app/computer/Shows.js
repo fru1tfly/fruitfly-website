@@ -19,16 +19,6 @@ const Shows = () => {
     const soundOn = useContext(SoundContext);
     const playClickSfx = useAudio(clickSfx);
 
-    const actList = (otherActs) => {
-        const prefix = 'w/';
-        if(otherActs.length === 1) {
-            return `${prefix}${otherActs[0]}`;
-        }
-        if(otherActs.length === 2) {
-            return `${prefix}${otherActs[0]} & ${otherActs[1]}`;
-        }
-    };
-
     const playClick = () => {
         if(soundOn) {
             playClickSfx();
@@ -53,7 +43,7 @@ const Shows = () => {
                     </div>
                     <div className="show-title show-date"></div>
                     {show.otherActs && 
-                        <div className="show-subtitle">{actList(show.otherActs)}</div>
+                        <div className="show-subtitle">{`w/${show.otherActs.join(', ')}`}</div>
                     }
                     {show.venue && show.setTime &&
                         <div className="show-subtitle">{show.venue} | Fruitfly at {show.setTime}</div>
