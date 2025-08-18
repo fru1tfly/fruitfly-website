@@ -3,7 +3,7 @@ import { useState, memo, useRef } from 'react';
 import { validateField } from 'utils/validation';
 import { signUpValidations } from 'app/admin/login/validation';
 import { TYPING_DELAY } from 'stores/uiConstants';
-import ErrorTooltip from './ErrorTooltip';
+import ErrorTooltip from '../ErrorTooltip';
 import { FormValueType } from 'types/FormValueType';
 
 const InputRow = memo(({ field, label, formState, formErrors, className }) => {
@@ -36,6 +36,8 @@ const InputRow = memo(({ field, label, formState, formErrors, className }) => {
         }
         return value;
     }
+
+    const iconRef = useRef();
 
     return (
         <div className={className}>

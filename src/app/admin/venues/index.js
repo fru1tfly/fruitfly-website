@@ -1,13 +1,11 @@
 import { useGet } from "hooks/useGet";
 
-import { buildValidationObject } from "utils/validation";
-
 import ItemListPage from "components/admin/ItemListPage";
 import { venueMapping, venueCard } from "./model";
 import { venueValidations } from "./validation";
 import FormObject from "types/FormObject";
 
-import { ItemsContext, ItemsUpdateContext } from "stores/ItemsContext";
+import { ItemsContext } from "stores/ItemsContext";
 
 
 const AdminVenues = () => {

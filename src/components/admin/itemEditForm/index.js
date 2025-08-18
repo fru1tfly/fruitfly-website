@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import Modal from "components/Modal";
+import Modal from "components/admin/Modal";
 import Form from "components/admin/Form";
 
 import { ItemsContext } from "stores/ItemsContext";

@@ -1,18 +1,16 @@
 import { useGet } from "hooks/useGet";
 
-import { buildValidationObject } from "utils/validation";
-
 import ItemListPage from "components/admin/ItemListPage";
 import { showMapping, showCard } from "./model";
 import { showValidations } from "./validation";
 import FormObject from "types/FormObject";
 
-import { ItemsContext, ItemsUpdateContext } from "stores/ItemsContext";
+import { ItemsContext } from "stores/ItemsContext";
 
 
 const AdminShows = () => {
     const endpoint = "/shows";
-    const { result, error, loading, refresh }= useGet(endpoint);
+    const { result, error, loading, refresh } = useGet(endpoint);
 
     const itemsContext = {
         title: "Shows",

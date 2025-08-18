@@ -17,7 +17,7 @@ import clickSfx from 'assets/sfx/click.mp3';
 
 import { useState, useContext, useRef } from 'react';
 
-import { MouseTracker } from 'components/MouseTracker';
+import { MouseTracker } from 'components/computer/MouseTracker';
 import { SoundContext } from 'stores/SoundContext';
 import { useAudio } from 'hooks/useAudio';
 

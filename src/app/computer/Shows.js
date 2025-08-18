@@ -1,5 +1,3 @@
-import okcool from 'assets/shows/okcool.jpg';
-
 import directions from 'assets/directions.png';
 
 import { useContext } from 'react';
@@ -7,13 +5,13 @@ import { SoundContext } from "stores/SoundContext";
 import clickSfx from 'assets/sfx/click.mp3';
 import { useAudio } from 'hooks/useAudio';
 
-import Window from 'components/Window';
+import Window from 'components/computer/Window';
 import { useGet } from 'hooks/useGet';
 import { formatDate, formatTime } from 'utils/dates';
 
 const Shows = () => {
 
-    const { result, error, loading, refresh} = useGet('/shows/upcoming');
+    const { result } = useGet('/shows/upcoming');
     const shows = result?.shows;
 
     const soundOn = useContext(SoundContext);

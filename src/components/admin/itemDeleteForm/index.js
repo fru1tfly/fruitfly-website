@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ItemsContext } from "stores/ItemsContext";
-import Modal from "components/Modal";
+import Modal from "components/admin/Modal";
 import { useDeleteRecord } from "hooks/useDeleteRecord";
 
 const ItemDeleteForm = ({ item, closeFunc, refresh }) => {

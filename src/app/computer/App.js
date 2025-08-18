@@ -1,6 +1,6 @@
-import './styles/computer.css';
-import Icon from 'components/icon';
-import SoundButton from 'components/SoundButton';
+import '../styles/computer.css';
+import Icon from 'components/computer/icon';
+import SoundButton from 'components/computer/SoundButton';
 import { SoundContext } from 'stores/SoundContext';
 
 import logo from 'assets/logo.png';
@@ -11,14 +11,14 @@ import shows from 'assets/icons/shows-icon.png';
 import socials from 'assets/icons/socials-icon.png';
 import photos from 'assets/icons/photos-icon.png';
 
-import Music from './computer/Music';
-import Shows from './computer/Shows';
-import Socials from './computer/Socials';
-import Photos from './computer/Photos';
-import Contact from './computer/Contact';
+import Music from './Music';
+import Shows from './Shows';
+import Socials from './Socials';
+import Photos from './Photos';
+import Contact from './Contact';
 
 import { useState } from 'react';
-import ComputerBox from 'components/ComputerBox';
+import ComputerBox from 'components/computer/ComputerBox';
 
 function App() {
   
