@@ -15,7 +15,10 @@ export function useFormSubmit(data, errors, validations, endpoint, callback, exc
         e.stopPropagation();
         setServerError('');
 
+        console.log(data.value, validations);
+
         const submitErrors = validateForm(SUBMIT_VALIDATION_NAME, data.value, validations);
+        console.log(submitErrors);
         errors.setter(submitErrors);
 
         const fieldErrors = Object.values(submitErrors).filter(errs => errs.length > 0);

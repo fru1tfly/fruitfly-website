@@ -52,13 +52,13 @@ const getLabel = (field) => {
     return field.key.charAt(0).toUpperCase() + field.key.slice(1);
 }
 
-const FormItem = ({ field, ...rest }) => {
+const FormItem = ({ field, className }) => {
     const label = getLabel(field);
     const render = inputRowTypes.includes(field.type) 
         ? fieldRenderFunctions.__inputRow 
         : fieldRenderFunctions[field.type];
-
-    return render({label, field, ...rest});
+    
+    return render({ label, field, className });
 };
 
 export default FormItem;

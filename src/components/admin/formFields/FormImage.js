@@ -1,12 +1,16 @@
 import { useUploadFile } from "hooks/files/useUploadFile";
 import { useDeleteFile } from "hooks/files/useDeleteFile";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Spinner from "../Spinner";
+import { FormContext } from "stores/FormContext";
 
-const FormImage = ({ label, field, formState, formErrors }) => {
+const FormImage = ({ label, field }) => {
+
+    const form = useContext(FormContext);
 
     const { isLoading, setIsLoading, uploadFile } = useUploadFile();
     const { isDeleting, deleteFile } = useDeleteFile();
+
     const [imageIcon, setImageIcon] = useState("fa-image");
     const [isBroken, setIsBroken] = useState(false);
     
@@ -18,19 +22,19 @@ const FormImage = ({ label, field, formState, formErrors }) => {
 
         uploadFile(file, field.destination).then(response => {
             const imageUrl = `${process.env.REACT_APP_DOMAIN}${response}`;
-            formState.setter((prev) => ({...prev, [field.key]: imageUrl}));
+            form.setValues((prev) => ({...prev, [field.key]: imageUrl}));
             setIsBroken(false);
         });
     };
 
     const deleteImage = async (e) => {
-        const filename = formState.value[field.key].split('/').pop();
+        const filename = form.values[field.key].split('/').pop();
         deleteFile(field.destination + '/' + filename).then(res => 
-            formState.setter((prev) => ({...prev, [field.key]: null}))
+            form.setValues((prev) => ({...prev, [field.key]: null}))
         );
     }
 
-    const imageDisplayed = formState.value[field.key] && !isBroken;
+    const imageDisplayed = form.values[field.key] && !isBroken;
 
     return (
         <section className="form-image-container">
@@ -45,15 +49,13 @@ const FormImage = ({ label, field, formState, formErrors }) => {
                         imageDisplayed ? (
                             <img 
                                 className="form-image"
-                                src={formState.value[field.key]} 
+                                src={form.values[field.key]} 
                                 alt={label} 
                                 onLoad={() => setIsLoading(false)}
-                                onError={
-                                    () => {
-                                        setIsBroken(true); 
-                                        setImageIcon("fa-link-slash"); 
-                                    }
-                                } 
+                                onError={() => {
+                                    setIsBroken(true); 
+                                    setImageIcon("fa-link-slash"); 
+                                }} 
                             />
                         ) : !(isLoading || isDeleting) ? (
                             <>
@@ -71,7 +73,6 @@ const FormImage = ({ label, field, formState, formErrors }) => {
                     </div>
                 ) : ''}
             </label>
-            
         </section>
     );
 };

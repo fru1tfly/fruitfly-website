@@ -1,12 +1,14 @@
-import { memo, useState, useRef } from "react";
+import { memo, useState, useRef, useContext } from "react";
 import { createPortal } from "react-dom";
 
 import { useGet } from "hooks/useGet";
 import { TYPING_DELAY } from "stores/uiConstants";
 import { FormValueType } from "types/FormValueType";
 import ItemEditForm from "../itemEditForm";
+import { FormContext } from "stores/FormContext";
 
-const FormLookup = memo(({ label, field, formState, formErrors }) => {
+const FormLookup = memo(({ label, field }) => {
+    const form = useContext(FormContext);
     const [inputValue, setInputValue] = useState('');
     const [searchTerm, setSearchTerm] = useState(field.matchEndpoint + '/search/');
     const [typing, setTyping] = useState(false);
@@ -29,7 +31,7 @@ const FormLookup = memo(({ label, field, formState, formErrors }) => {
     }
 
     const selectItem = (item) => {
-        formState.setter((prev) => { 
+        form.setValues((prev) => { 
             return {
                 ...prev, 
                 [field.lookupLabel]: item[field.lookupLabel],
@@ -44,7 +46,7 @@ const FormLookup = memo(({ label, field, formState, formErrors }) => {
             <label htmlFor={field.key}>{label}</label>
             <section className="login-input-row">
                 <div className="login-input-container">
-                    {(!formState.value[field.key] || typing) ? (
+                    {(!form.values[field.key] || typing) ? (
                         <div 
                             onFocus={() => setDropdownOpen(true)}
                             onBlur={(e) => {
@@ -85,14 +87,14 @@ const FormLookup = memo(({ label, field, formState, formErrors }) => {
                         <div className="login-input login-input-lookup">
                             <>
                                 <div className="lookup-pill">
-                                    {formState.value[field.lookupLabel]}
+                                    {form.values[field.lookupLabel]}
                                 </div>
                                 <i className="fa-solid fa-circle-xmark form-dropdown-icon" onClick={() => {
                                     setTyping(true);
                                     setDropdownOpen(false);
                                 }}></i>
                             </>
-                            {!formState.value[field.key] && <>&nbsp;</>}
+                            {!form.values[field.key] && <>&nbsp;</>}
                         </div>
                     )}
                 </div>

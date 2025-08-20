@@ -1,15 +1,12 @@
 import ChildItems from "./ChildItems";
 
-const FormSection = ({ label, field, definition, formState, formErrors}) => {
+const FormSection = ({ label, field }) => {
     return (
         <div className="form-section">
             <div className="form-section-header">{label}</div>
             <div className="form-section-body">
                 <ChildItems 
-                    children={field.children}
-                    definition={definition}
-                    formState={formState}
-                    formErrors={formErrors}
+                    items={field.children}
                     className="form-section-item"
                 />
             </div>

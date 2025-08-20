@@ -1,17 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import FormItem from "./FormItem";
+import { FormContext } from "stores/FormContext";
 
-const FormMultiSelectRow = ({ field, definition, state, errors, removeRow }) => {
+const FormMultiSelectRow = ({ field, removeRow }) => {
     return (
         <div className="form-multiselect-row">
-            <FormItem 
-                field={field}
-                definition={definition}
-                formState={state} 
-                formErrors={errors}
-                className="form-multiselect-input"
-            />
+            <FormItem field={field} className="form-multiselect-input" />
             <button className="form-negative-btn" onClick={(e) => {
                 e.preventDefault();
                 removeRow(field.key);
@@ -22,10 +17,11 @@ const FormMultiSelectRow = ({ field, definition, state, errors, removeRow }) => 
     );
 };
 
-const FormMultiSelect = ({ label, field, definition, formState, formErrors }) => {
-    const [subState, setSubState] = useState(formState.value[field.key]);
+const FormMultiSelect = ({ label, field }) => {
+    const form = useContext(FormContext);
+    const [subState, setSubState] = useState(form.values[field.key]);
 
-    let subDefinition = {};
+    const subDefinition = {};
     Object.keys(subState).forEach(key => {
         subDefinition[key] = {
             type: field.multiType,
@@ -40,20 +36,27 @@ const FormMultiSelect = ({ label, field, definition, formState, formErrors }) =>
         e.preventDefault();
         const newSubState = [...subState, ''];
         setSubState(newSubState);
-        formState.setter((prev) => { return {...prev, [field.key]: newSubState}});
+        form.setValues((prev) => { return {...prev, [field.key]: newSubState}});
     }
 
     const removeRow = (key) => {
         const newSubState = [...subState];
         newSubState.splice(key, 1);
         setSubState(newSubState);
-        formState.setter((prev) => { return {...prev, [field.key]: newSubState}});
+        form.setValues((prev) => { return {...prev, [field.key]: newSubState}});
     } 
 
     const childChange = (newState) => {
         const result = newState(subStateObject);
         setSubState(Object.values(result));
-        formState.setter((prev) => { return {...prev, [field.key]: Object.values(result)}});
+        form.setValues((prev) => { return {...prev, [field.key]: Object.values(result)}});
+    }
+
+    const formSubContext = {
+        values: subStateObject,
+        setValues: childChange,
+        errors: form.errors,
+        setErrors: form.setErrors
     }
 
     return (
@@ -65,16 +68,12 @@ const FormMultiSelect = ({ label, field, definition, formState, formErrors }) =>
                 </button>
             </label>
             {Object.keys(subState).map(key => (
-                <FormMultiSelectRow 
-                    field={subDefinition[key]}
-                    definition={subDefinition}
-                    state={{
-                        value: subStateObject,
-                        setter: childChange
-                    }} 
-                    errors={formErrors}
-                    removeRow={removeRow}
-                />
+                <FormContext.Provider value={formSubContext}>
+                    <FormMultiSelectRow 
+                        field={subDefinition[key]}
+                        removeRow={removeRow}
+                    />
+                </FormContext.Provider>
             ))}
         </div>
     );

@@ -5,6 +5,7 @@ import { buildValidationObject } from "utils/validation";
 import { getFormDataKeys, normalizeFormData } from "utils/formData";
 
 import FormItem from "./formFields/FormItem";
+import { FormContext } from "stores/FormContext";
 
 const Form = ({ definition, endpoint, header, footer, disableAuto, callback, values }) => {
     const { data, errors } = useForm(
@@ -24,25 +25,28 @@ const Form = ({ definition, endpoint, header, footer, disableAuto, callback, val
         excludedValues
     );
 
-    console.log(definition);
+    const formContext = {
+        definition: definition,
+        values: data.value,
+        setValues: data.setter,
+        errors: errors.value,
+        setErrors: errors.setter
+    }
 
     return (
         <Spinner visible={isLoading}>
             {header && header(serverError)}
             <form onSubmit={submit} action={null} onKeyDown={(e) => { disableAuto && e.key === 'Enter' && e.preventDefault(); }}>
                 <div className="form-body">
-                    {Object.keys(definition.mapping).map(key => {
-                        const fieldData = {
-                            ...definition.mapping[key],
-                            key: key
-                        }
-                        return <FormItem 
-                            field={fieldData} 
-                            definition={definition}
-                            formState={data} 
-                            formErrors={errors} 
-                        />; 
-                    })}
+                    <FormContext.Provider value={formContext}>
+                        {Object.keys(definition.mapping).map(key => {
+                            const fieldData = {
+                                ...definition.mapping[key],
+                                key: key
+                            }
+                            return <FormItem field={fieldData} />; 
+                        })}
+                    </FormContext.Provider>
                 </div>
                 {footer && footer()}
             </form>
