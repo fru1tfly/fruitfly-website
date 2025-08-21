@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Card from 'components/Card';
+import Card from 'components/admin/Card';
 import SignUpForm from './signupForm';
 import LoginForm from './loginForm';
 

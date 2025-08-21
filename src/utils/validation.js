@@ -21,7 +21,7 @@ export const validateField = (context, fieldName, formData, validations) => {
 export const validateForm = (context, formData, validations) => {
     let errors = {};
 
-    for(let field of Object.keys(formData)) {
+    for(let field of Object.keys(validations)) {
         errors[field] = validateField(context, field, formData, validations);
     } 
 

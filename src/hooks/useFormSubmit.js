@@ -1,11 +1,9 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import axios from 'stores/axios';
 
 import { SPINNER_DEPLAY } from 'stores/uiConstants';
 import { validateForm } from 'utils/validation';
-import { getAuthToken, getUserInfo } from 'utils';
-
-import { UserUpdateContext } from 'stores/UserContext';
+import { getAuthToken } from 'utils';
 
 const SUBMIT_VALIDATION_NAME = "onSubmit";
 export function useFormSubmit(data, errors, validations, endpoint, callback, excludes = null) {
@@ -17,7 +15,10 @@ export function useFormSubmit(data, errors, validations, endpoint, callback, exc
         e.stopPropagation();
         setServerError('');
 
+        console.log(data.value, validations);
+
         const submitErrors = validateForm(SUBMIT_VALIDATION_NAME, data.value, validations);
+        console.log(submitErrors);
         errors.setter(submitErrors);
 
         const fieldErrors = Object.values(submitErrors).filter(errs => errs.length > 0);

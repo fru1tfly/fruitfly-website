@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import Modal from "components/Modal";
+import Modal from "components/admin/Modal";
 import Form from "components/admin/Form";
 
 import { ItemsContext } from "stores/ItemsContext";
@@ -23,12 +23,12 @@ const ItemEditForm = ({ item, closeFunc, action, refresh, childDefinition, child
     return (
         <Modal title={childDefinition ? '' : `${action} ${data.itemName}`} className="item-edit-modal" closeFunc={closeFunc}>
             <Form 
-                endpoint={`${childEndpoint ?? data.endpoint}/${action.toLowerCase()}`}
-                disableAuto={true}
-                values={item}
                 definition={childDefinition ?? data.itemDefinition}
+                endpoint={`${childEndpoint ?? data.endpoint}/${action.toLowerCase()}`}
                 footer={footer}
+                disableAuto={true}
                 callback={callback}
+                values={item}
             />
         </Modal>
     );

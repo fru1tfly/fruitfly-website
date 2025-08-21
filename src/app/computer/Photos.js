@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Window from 'components/Window';
+import Window from 'components/computer/Window';
 
 import video from 'assets/icons/video.png';
 import photo from 'assets/icons/folder.png';

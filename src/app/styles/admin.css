@@ -174,16 +174,14 @@
 
 .error-tooltip-container {
     font-family: epk-sans;
-    position: absolute;
+    position: fixed;
     background-color: #aa5c4e;
-    top: -75px;
     height: 65px;
     padding: 10px;
     padding-top: 6px;
     border-radius: 10px;
     border: 2px solid #5a2e2e;
     border-bottom-width: 4px;
-    right: -10px;
     color: #fff;
     animation: tooltipEnter 0.2s ease-out 1;
 }
@@ -757,12 +755,12 @@ input[type="date"], input[type="time"] {
 
 @keyframes tooltipEnter {
     0% {
-        top: -65px;
+        transform: translateY(-10px);
         opacity: 0;
     }
 
     100% {
-        top: -75px;
+        transform: translateY(0px);
         opacity: 1;
     }
 }
@@ -828,10 +826,6 @@ input[type="date"], input[type="time"] {
         flex-basis: 48%;
     }
 
-    .item-list-page-contents {
-        flex-direction: column;
-    }
-
     .item-edit-modal {
         width: calc(100vw - 20px);
     }
@@ -863,5 +857,40 @@ input[type="date"], input[type="time"] {
     }
 }
 
-@media screen and (min-width: 601px) {
+@media screen and (max-width: 1260px) {
+    .item-list-page-contents {
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 1261px) {
+    .item-card-container {
+        flex-basis: 45%;
+        flex-grow: 1;
+        max-width: calc(50% - 5px);
+    }
+}
+
+@media screen and (min-width: 1701px) {
+    .item-card-container {
+        flex-basis: 30%;
+        flex-grow: 1;
+        max-width: calc(33% - 5px);
+    }
+}
+
+@media screen and (min-width: 2201px) {
+    .item-card-container {
+        flex-basis: 23%;
+        flex-grow: 1;
+        max-width: calc(25% - 5px);
+    }
+}
+
+@media screen and (min-width: 2671px) {
+    .item-card-container {
+        flex-basis: 19%;
+        flex-grow: 1;
+        max-width: calc(20% - 5px);
+    }
 }

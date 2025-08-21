@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 import { SoundContext } from "stores/SoundContext";
 import { useAudio } from 'hooks/useAudio';
 
-import Window from "components/Window";
+import Window from "components/computer/Window";
 
 import clickSfx from 'assets/sfx/click.mp3';
 import sendSfx from 'assets/sfx/send.mp3';

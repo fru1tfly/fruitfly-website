@@ -9,7 +9,7 @@ import bluesky from 'assets/socials/bluesky.png';
 
 import online from 'assets/online.png';
 
-import { MouseTracker } from 'components/MouseTracker';
+import { MouseTracker } from 'components/computer/MouseTracker';
 import { SoundContext } from 'stores/SoundContext';
 import { useAudio } from 'hooks/useAudio';
 import { useRef, useState, useContext } from 'react';
