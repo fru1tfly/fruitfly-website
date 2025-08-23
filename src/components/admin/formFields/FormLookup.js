@@ -10,7 +10,7 @@ import { FormContext } from "stores/FormContext";
 const FormLookup = memo(({ label, field }) => {
     const form = useContext(FormContext);
     const [inputValue, setInputValue] = useState('');
-    const [searchTerm, setSearchTerm] = useState(field.matchEndpoint + '/search/');
+    const [searchTerm, setSearchTerm] = useState(field.matchEndpoint);
     const [typing, setTyping] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [creating, setCreating] = useState(false);
@@ -26,7 +26,7 @@ const FormLookup = memo(({ label, field }) => {
 
         clearTimeout(typingTimeout.current);
         typingTimeout.current = setTimeout(() => {
-            setSearchTerm(field.matchEndpoint + '/search/' + value);
+            setSearchTerm(field.matchEndpoint + '?' + field.lookupLabel + '=' + value);
         }, TYPING_DELAY);
     }
 
