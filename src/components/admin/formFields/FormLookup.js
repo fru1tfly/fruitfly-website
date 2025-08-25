@@ -6,9 +6,14 @@ import { TYPING_DELAY } from "stores/uiConstants";
 import { FormValueType } from "types/FormValueType";
 import ItemEditForm from "../itemEditForm";
 import { FormContext } from "stores/FormContext";
+import { ModalContext } from "stores/ModalContext";
+import { extractErrorMessage } from "utils/formData";
+import ErrorTooltip from "../tooltips/ErrorTooltip";
 
 const FormLookup = memo(({ label, field }) => {
     const form = useContext(FormContext);
+    const modal = useContext(ModalContext);
+
     const [inputValue, setInputValue] = useState('');
     const [searchTerm, setSearchTerm] = useState(field.matchEndpoint);
     const [typing, setTyping] = useState(false);
@@ -17,6 +22,9 @@ const FormLookup = memo(({ label, field }) => {
 
     const { result, error, loading, refresh } = useGet(searchTerm);
 
+    const errorMessage = extractErrorMessage(form.errors[field.key]);
+
+    const inputRef = useRef(null);
     const dropdownRef = useRef(null);
 
     const typingTimeout = useRef();
@@ -39,6 +47,19 @@ const FormLookup = memo(({ label, field }) => {
             }
         });
         setTyping(false);
+        form.setErrors((prev) => ({...prev, [field.key]: []}))
+    }
+
+    const clearItem = () => {
+        setTyping(true);
+        setDropdownOpen(false);
+        form.setValues((prev) => {
+            return {
+                ...prev,
+                [field.lookupLabel]: '',
+                [field.key]: ''
+            }
+        })
     }
 
     return (
@@ -58,10 +79,11 @@ const FormLookup = memo(({ label, field }) => {
                             <input 
                                 type={FormValueType.TEXT}
                                 id={field.key}
-                                className={`login-input`}
+                                className={`login-input ${errorMessage && 'login-input-error'}`}
                                 value={inputValue}
                                 onChange={handleAutocomplete}
                                 autoComplete="false"
+                                ref={inputRef}
                             />
                             {dropdownOpen && 
                                 <div className="form-dropdown" ref={dropdownRef}>
@@ -89,10 +111,7 @@ const FormLookup = memo(({ label, field }) => {
                                 <div className="lookup-pill">
                                     {form.values[field.lookupLabel]}
                                 </div>
-                                <i className="fa-solid fa-circle-xmark form-dropdown-icon" onClick={() => {
-                                    setTyping(true);
-                                    setDropdownOpen(false);
-                                }}></i>
+                                <i className="fa-solid fa-circle-xmark form-dropdown-icon" onClick={clearItem}></i>
                             </>
                             {!form.values[field.key] && <>&nbsp;</>}
                         </div>
@@ -112,6 +131,16 @@ const FormLookup = memo(({ label, field }) => {
                             refresh();
                         }}
                     />,
+                    document.body
+                )
+            }
+
+            {errorMessage && !modal.isClosing && 
+                createPortal(
+                    <ErrorTooltip 
+                        text={errorMessage} 
+                        row={inputRef}
+                    />, 
                     document.body
                 )
             }

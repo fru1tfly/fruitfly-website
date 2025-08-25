@@ -3,6 +3,7 @@ import { useDeleteFile } from "hooks/files/useDeleteFile";
 import { useContext, useState } from "react";
 import Spinner from "../Spinner";
 import { FormContext } from "stores/FormContext";
+import FieldLabel from "./FieldLabel";
 
 const FormImage = ({ label, field }) => {
 
@@ -38,8 +39,7 @@ const FormImage = ({ label, field }) => {
 
     return (
         <section className="form-image-container">
-            <label htmlFor={field.key}>{label}</label>
-
+            <FieldLabel field={field} label={label} />
             <label htmlFor="photo-input" className={`form-image-box ${imageDisplayed ? '' : 'clickable'}`}
                 onMouseEnter={() => setImageIcon("fa-arrow-up-from-bracket")}
                 onMouseLeave={() => setImageIcon(getImageIcon())}

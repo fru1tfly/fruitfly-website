@@ -2,8 +2,9 @@ import { useContext, useState } from "react";
 
 import FormItem from "./FormItem";
 import { FormContext } from "stores/FormContext";
+import { extractErrorMessage } from "utils/formData";
 
-const FormMultiSelectRow = ({ field, removeRow }) => {
+const FormMultiSelectRow = ({ field, removeRow, message, missingRows }) => {
     return (
         <div className="form-multiselect-row">
             <FormItem field={field} className="form-multiselect-input" />
@@ -17,9 +18,12 @@ const FormMultiSelectRow = ({ field, removeRow }) => {
     );
 };
 
+
 const FormMultiSelect = ({ label, field }) => {
     const form = useContext(FormContext);
+
     const [subState, setSubState] = useState(form.values[field.key]);
+    const subErrors = extractErrorMessage(form.errors[field.key]);
 
     const subDefinition = {};
     Object.keys(subState).forEach(key => {
@@ -31,6 +35,7 @@ const FormMultiSelect = ({ label, field }) => {
     });
 
     const subStateObject = Object.assign({}, subState);
+    const subErrorObject = Object.assign({}, subErrors);
 
     const addRow = (e) => {
         e.preventDefault();
@@ -52,11 +57,16 @@ const FormMultiSelect = ({ label, field }) => {
         form.setValues((prev) => { return {...prev, [field.key]: Object.values(result)}});
     }
 
+    const childErrorChange = (newErrors) => {
+        const result = newErrors(subErrorObject);
+        form.setErrors((prev) => { return {...prev, [field.key]: Object.values(result)}});
+    }
+
     const formSubContext = {
         values: subStateObject,
         setValues: childChange,
-        errors: form.errors,
-        setErrors: form.setErrors
+        errors: subErrorObject,
+        setErrors: childErrorChange
     }
 
     return (

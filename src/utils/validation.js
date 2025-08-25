@@ -41,3 +41,33 @@ export const buildValidationObject = (fieldMapping) => {
     }
     return result;
 }
+
+export const multiselectNoBlanks = (label, field, joinCharacter) => {
+    const message = `${label} cannot include any blank rows`;
+    const subErrors = Array(field.split(joinCharacter).length).fill('');
+
+    let tempString = '';
+    let slotPointer = 0;
+    for(let i = 0; i < field.length; i++) {
+        const char = field.charAt(i);
+        if(char === joinCharacter) {
+            if (tempString === '') {
+                subErrors[slotPointer] = [message];
+            }
+
+            slotPointer++;
+            tempString = '';
+
+            if(i === field.length - 1) {
+                subErrors[slotPointer] = [message];
+            }
+        } else {
+            tempString += char;
+        }
+    }
+
+    if(subErrors.filter(err => err !== '').length > 0) {
+        return subErrors
+    }
+    return false;
+}

@@ -1,23 +1,26 @@
-import { useState, memo, useRef, useEffect, useContext } from 'react';
+import { useState, memo, useRef, useContext } from 'react';
+import { createPortal } from 'react-dom';
+
+import { FormValueType } from 'types/FormValueType';
+import { TYPING_DELAY } from 'stores/uiConstants';
+import { FormContext } from 'stores/FormContext';
+import { ModalContext } from 'stores/ModalContext';
 
 import { validateField } from 'utils/validation';
-import { signUpValidations } from 'app/admin/login/validation';
-import { TYPING_DELAY } from 'stores/uiConstants';
-import ErrorTooltip from '../ErrorTooltip';
-import { FormValueType } from 'types/FormValueType';
-import { createPortal } from 'react-dom';
-import { FormContext } from 'stores/FormContext';
+import { extractErrorMessage } from 'utils/formData';
+
+import FieldLabel from './FieldLabel';
+import ErrorTooltip from '../tooltips/ErrorTooltip';
 
 const InputRow = memo(({ field, label, className }) => {
 
     const form = useContext(FormContext);
+    const modal = useContext(ModalContext);
 
     const [closing, setIsClosing] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
-    const errorData = form.errors[field.key];
-    const hasError = errorData?.length > 0;
-    const errorMessage = hasError ? errorData[0] : ''; 
+    const errorMessage = extractErrorMessage(form.errors[field.key]);
 
     const isPassword = field.type === FormValueType.PASSWORD;
     const passwordIconClassName = `fa-solid fa-eye${showPassword ? '-slash' : ''} show-password`;
@@ -32,7 +35,7 @@ const InputRow = memo(({ field, label, className }) => {
 
         clearTimeout(typingTimeout.current);
         typingTimeout.current = setTimeout(() => {
-            const realTimeErrors = validateField("realTime", field.key, {...form.values, [id]: value}, signUpValidations);
+            const realTimeErrors = validateField("realTime", field.key, {...form.values, [id]: value}, form.definition.validations);
             form.setErrors((prev) => ({...prev, [id]: realTimeErrors.length > 0 ? realTimeErrors : [] }));
             setIsClosing(realTimeErrors.length === 0 && errorMessage);
         }, TYPING_DELAY);
@@ -47,7 +50,7 @@ const InputRow = memo(({ field, label, className }) => {
 
     return (
         <div className={className}>
-            {label && <label htmlFor={field.key}>{label}</label>}
+            <FieldLabel field={field} label={label} />
             <section className="login-input-row" ref={inputRef}>
                 <div className="login-input-container">
                     <input 
@@ -64,13 +67,23 @@ const InputRow = memo(({ field, label, className }) => {
                         >
                         </i>
                     }
+                    {(errorMessage || closing) && !isPassword &&
+                        <i ref={iconRef} 
+                            className={`fa-solid fa-triangle-exclamation input-alert ${closing ? 'input-alert-exit' : 'input-alert-enter'}`}
+                        >
+                        </i>
+                    }
                 </div>
-                {(errorMessage || closing) && <i ref={iconRef} className={`fa-solid fa-triangle-exclamation input-alert ${closing ? 'input-alert-exit' : 'input-alert-enter'}`}></i>}
-                {errorMessage && createPortal(<ErrorTooltip 
-                    text={errorMessage} 
-                    icon={iconRef} 
-                    row={inputRef}
-                />, document.body)}
+                
+                {errorMessage && !modal.isClosing && 
+                    createPortal(
+                        <ErrorTooltip 
+                            text={errorMessage} 
+                            row={inputRef}
+                        />, 
+                        document.body
+                    )
+                }
             </section>
         </div>
     );

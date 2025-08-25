@@ -1,6 +1,6 @@
-const Card = ({children, className}) => {
+const Card = ({children}) => {
     return (
-        <div className={`heavy-border ${className}`}>
+        <div className={`heavy-border login-card full-center`}>
             {children}
         </div>
     );

@@ -20,7 +20,7 @@ export const showMapping = {
         multiType: FormValueType.TEXT,
         joinCharacter: ';'
     },
-    thingy: {
+    centerSection: {
         type: FormValueType.COLUMNS,
         columns: [
             {
@@ -54,7 +54,6 @@ export const showMapping = {
     times: {
         type: FormValueType.HEADER,
         childClass: "form-section-item",
-        info: "Specify at least one of the three",
         children: {
             doorsTime: {
                 label: "Doors",

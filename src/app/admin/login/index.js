@@ -9,7 +9,7 @@ const Login = () => {
     const [showSignUp, setShowSignUp] = useState(false);
 
     return (
-        <Card className={`full-center login-card ${showSignUp ? 'tall' : ''}`}>
+        <Card>
             {showSignUp && <SignUpForm setVisible={setShowSignUp} />}
             {!showSignUp && <LoginForm setVisible={setShowSignUp} />}
         </Card>

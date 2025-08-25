@@ -31,7 +31,7 @@ const SignUpForm = ({ setVisible }) => {
                 <i className="fa-regular fa-circle-left"></i>
             </button>
             <h3 className="login-title">Sign Up</h3>
-            <p className="error-text">{serverError}</p>
+            {serverError && <p className="error-text">{serverError}</p>}
         </>
     );
 

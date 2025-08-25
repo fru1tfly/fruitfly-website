@@ -26,16 +26,13 @@
     flex-direction: column;
     align-items: center;
     padding: 25px;
-
     width: 100%;
-    height: 376px;
-    transition: height 0.2s ease 0s;
-    overflow: hidden;
 }
 
 .tall {
-    height: 526px;
+    max-height: 100vh;
 }
+
 
 .login-card > form {
     background-color: transparent;
@@ -122,10 +119,28 @@
 }
 
 .error-text {
-    color: #f00;
+    color: #fff;
     font-weight: 700;
-    height: 1rem;
     text-align: center;
+    position: absolute;
+    background-color: #aa5c4e;
+    border-radius: 10px;
+    border: 2px solid #5a2e2e;
+    border-bottom-width: 4px;
+    padding: 6px;
+    padding-top: 3px;
+    top: -50px;
+    animation: errorTextAppear 0.1s ease forwards;
+}
+
+@keyframes errorTextAppear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .spinner-background {
@@ -152,60 +167,84 @@
 }
 
 :root {
-    --alert-width: 28px;
-    --alert-gap: 10px;
+    --alert-width: 30px;
 }
 
 .input-alert {
     color: rgb(224, 26, 26);
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     overflow: hidden;
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translate(0, -50%);
+    text-align: center;
 }
 
 .input-alert-enter {
-    animation: alertAppear 0.2s ease 1;
-    padding-left: var(--alert-gap);
+    animation: alertAppear 0.2s ease forwards;
+    flex-shrink: 0;
 }
 
 .input-alert-exit {
-    animation: alertExit 0.2s ease 1;
+    animation: alertExit 0.2s ease forwards;
     width: 0px;
 }
 
-.error-tooltip-container {
+.tooltip-container {
     font-family: epk-sans;
     position: fixed;
-    background-color: #aa5c4e;
     height: 65px;
     padding: 10px;
     padding-top: 6px;
-    border-radius: 10px;
-    border: 2px solid #5a2e2e;
+    border: 2px solid black;
     border-bottom-width: 4px;
-    color: #fff;
+    border-radius: 10px;
     animation: tooltipEnter 0.2s ease-out 1;
 }
 
-.error-tooltip-container::after {
+.tooltip-container::after {
     content: "";
     width: 10px;
     height: 10px;
-    background-color: #aa5c4e;
     transform: rotate(45deg);
     position: absolute;
     top: calc(100% - 4px);
-    border: 2px solid #5a2e2e;
-    border-width: 0px 3px 3px 0px;
-    right: 15px;
     z-index: 10;
 }
 
-.error-tooltip-header {
+.error-tooltip-container {
+    border-color: #5a2e2e;
+    background-color: #aa5c4e;
+    color: #fff;
+}
+
+.error-tooltip-container::after {
+    background-color: #aa5c4e;
+    border: 2px solid #5a2e2e;
+    border-width: 0px 3px 3px 0px;
+    right: 25px;
+}
+
+.info-tooltip-container {
+    border-color: #2e455a;
+    background-color: #4e76aa;
+    color: #fff;
+}
+
+.info-tooltip-container::after {
+    background-color: #4e76aa;
+    border: 2px solid #2e455a;
+    border-width: 0px 3px 3px 0px;
+    left: 50%;
+}
+
+.tooltip-header {
     font-weight: 700;
     letter-spacing: 1px;
 }
 
-.error-tooltip-body {
+.tooltip-body {
     font-size: 14px;
     font-weight: 300;
 }
@@ -729,27 +768,28 @@ input[type="date"], input[type="time"] {
     justify-content: center;
 }
 
+.info-tooltip-icon {
+    padding-left: 5px;
+    cursor: pointer;
+}
+
 @keyframes alertAppear {
     0% {
         width: 0px;
-        padding-left: 0px;
     }
 
     100% {
-        width: calc(var(--alert-gap) + var(--alert-width));
-        padding-left: var(--alert-gap);
+        width: var(--alert-width);
     }
 }
 
 @keyframes alertExit {
     0% {
         width: var(--alert-width);
-        padding-left: var(--alert-gap);
     }
 
     100% {
         width: 0px;
-        padding-left: 0px;
     }
 }
 

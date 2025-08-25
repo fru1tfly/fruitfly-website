@@ -20,7 +20,7 @@ const LoginForm = ({ setVisible }) => {
     const formHeader = (serverError) => (
         <>
             <h3 className="login-title">FruitNet<sup>TM</sup></h3>
-            <p className="error-text">{serverError}</p>
+            {serverError && <p className="error-text">{serverError}</p>}
         </>
     );
 
